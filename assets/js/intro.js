@@ -54,7 +54,7 @@ function goToMainSite() {
     introPage.classList.add('fade-out');
     
     setTimeout(() => {
-        window.location.href = 'index.html';
+        window.location.href = 'main.html';
     }, 1000);
 }
 
@@ -80,6 +80,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // Preload main page
     const link = document.createElement('link');
     link.rel = 'prefetch';
-    link.href = 'index.html';
+    link.href = 'main.html';
     document.head.appendChild(link);
 });
