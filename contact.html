@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - WebBoost Studio</title>
+    <link rel="stylesheet" href="assets/css/contact.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html">
+                    <img src="assets/logo-new.svg" alt="WebBoost Studio" class="logo-small">
+                </a>
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html" class="nav-link">Accueil</a></li>
+                <li><a href="index.html#services" class="nav-link">Services</a></li>
+                <li><a href="index.html#about" class="nav-link">À propos</a></li>
+                <li><a href="contact.html" class="nav-link active">Contact</a></li>
+            </ul>
+            <div class="nav-toggle" id="navToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-background">
+            <div class="grid-overlay"></div>
+        </div>
+        
+        <div class="container">
+            <div class="hero-content">
+                <span class="hero-badge">
+                    <span class="badge-icon">💬</span>
+                    <span>Parlons de votre projet</span>
+                </span>
+                
+                <h1 class="hero-title">
+                    Transformons vos idées en <span class="text-highlight">réalité digitale</span>
+                </h1>
+                
+                <p class="hero-subtitle">
+                    Que vous ayez un projet précis ou simplement besoin de conseils, notre équipe est là pour vous accompagner.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section">
+        <div class="container">
+            <div class="contact-grid">
+                <!-- Contact Form -->
+                <div class="contact-form-container">
+                    <h2 class="section-title">Envoyez-nous un message</h2>
+                    <p class="section-subtitle">Remplissez le formulaire ci-dessous et nous vous répondrons dans les 24 heures.</p>
+                    
+                    <form class="contact-form" id="contactForm">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="name">Nom complet *</label>
+                                <input 
+                                    type="text" 
+                                    id="name" 
+                                    name="name" 
+                                    placeholder="Jean Dupont"
+                                    required
+                                >
+                                <span class="error-message" id="nameError"></span>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="email">Email *</label>
+                                <input 
+                                    type="email" 
+                                    id="email" 
+                                    name="email" 
+                                    placeholder="jean.dupont@email.com"
+                                    required
+                                >
+                                <span class="error-message" id="emailError"></span>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="phone">Téléphone</label>
+                                <input 
+                                    type="tel" 
+                                    id="phone" 
+                                    name="phone" 
+                                    placeholder="+33 6 12 34 56 78"
+                                >
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="company">Entreprise</label>
+                                <input 
+                                    type="text" 
+                                    id="company" 
+                                    name="company" 
+                                    placeholder="Nom de votre entreprise"
+                                >
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="service">Service souhaité *</label>
+                            <select id="service" name="service" required>
+                                <option value="">Sélectionnez un service</option>
+                                <option value="frontend">Développement Frontend</option>
+                                <option value="backend">Développement Backend</option>
+                                <option value="mobile">Développement Mobile</option>
+                                <option value="social">Social Management</option>
+                                <option value="fullstack">Projet complet</option>
+                                <option value="autre">Autre</option>
+                            </select>
+                            <span class="error-message" id="serviceError"></span>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Message *</label>
+                            <textarea 
+                                id="message" 
+                                name="message" 
+                                rows="6" 
+                                placeholder="Décrivez-nous votre projet..."
+                                required
+                            ></textarea>
+                            <span class="error-message" id="messageError"></span>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary btn-submit">
+                            <span class="btn-text">Envoyer le message</span>
+                            <span class="btn-icon">→</span>
+                        </button>
+                        
+                        <div class="form-success" id="formSuccess">
+                            <span class="success-icon">✓</span>
+                            <p>Message envoyé avec succès ! Nous vous répondrons rapidement.</p>
+                        </div>
+                    </form>
+                </div>
+                
+                <!-- Contact Info -->
+                <div class="contact-info">
+                    <div class="info-card">
+                        <div class="info-icon">📧</div>
+                        <h3>Email</h3>
+                        <a href="mailto:contact@weboost-studio.com">contact@weboost-studio.com</a>
+                        <p>Nous répondons sous 24h</p>
+                    </div>
+                    
+                    <div class="info-card">
+                        <div class="info-icon">📱</div>
+                        <h3>Téléphone</h3>
+                        <a href="tel:+33123456789">+33 1 23 45 67 89</a>
+                        <p>Lun - Ven : 9h - 18h</p>
+                    </div>
+                    
+                    <div class="info-card">
+                        <div class="info-icon">📍</div>
+                        <h3>Adresse</h3>
+                        <p>Paris, France</p>
+                        <p>Intervention partout en France</p>
+                    </div>
+                    
+                    <div class="info-card social-card">
+                        <h3>Suivez-nous</h3>
+                        <div class="social-links">
+                            <a href="#" class="social-link" aria-label="Instagram">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                                </svg>
+                                Instagram
+                            </a>
+                            <a href="#" class="social-link" aria-label="Facebook">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                                </svg>
+                                Facebook
+                            </a>
+                            <a href="#" class="social-link" aria-label="LinkedIn">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                                    <rect x="2" y="9" width="4" height="12"></rect>
+                                    <circle cx="4" cy="4" r="2"></circle>
+                                </svg>
+                                LinkedIn
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Contact Section -->
+    <section class="why-contact">
+        <div class="container">
+            <h2 class="section-title center">Pourquoi nous contacter ?</h2>
+            
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">⚡</div>
+                    <h3>Réponse rapide</h3>
+                    <p>Nous répondons à toutes les demandes sous 24 heures maximum</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon">💡</div>
+                    <h3>Conseils gratuits</h3>
+                    <p>Un premier échange sans engagement pour discuter de votre projet</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon">📊</div>
+                    <h3>Devis détaillé</h3>
+                    <p>Une estimation claire et transparente de votre projet</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon">🎯</div>
+                    <h3>Solutions sur mesure</h3>
+                    <p>Chaque projet est unique, nos propositions aussi</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-left">
+                    <img src="assets/logo-new.svg" alt="WebBoost Studio" class="footer-logo">
+                    <p class="footer-tagline">Propulsez votre présence digitale</p>
+                </div>
+                
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Navigation</h4>
+                        <ul>
+                            <li><a href="index.html#home">Accueil</a></li>
+                            <li><a href="index.html#services">Services</a></li>
+                            <li><a href="index.html#about">À propos</a></li>
+                            <li><a href="contact.html">Contact</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-column">
+                        <h4>Services</h4>
+                        <ul>
+                            <li><a href="index.html#services">Développement Frontend</a></li>
+                            <li><a href="index.html#services">Développement Backend</a></li>
+                            <li><a href="index.html#services">Développement Mobile</a></li>
+                            <li><a href="index.html#services">Social Management</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-column">
+                        <h4>Contact</h4>
+                        <ul>
+                            <li><a href="mailto:contact@weboost-studio.com">contact@weboost-studio.com</a></li>
+                            <li><a href="tel:+33123456789">+33 1 23 45 67 89</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 WebBoost Studio. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/contact.js"></script>
+</body>
+</html>

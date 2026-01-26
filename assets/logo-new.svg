@@ -1,0 +1,66 @@
+<svg width="400" height="500" viewBox="0 0 400 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Définition des dégradés -->
+  <defs>
+    <linearGradient id="rocketGradient" x1="200" y1="50" x2="200" y2="300" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" style="stop-color:#1E293B;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0F172A;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="windowGradient" x1="200" y1="100" x2="200" y2="140" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" style="stop-color:#FDE68A;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#FCD34D;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="flameGradient" x1="200" y1="280" x2="200" y2="380" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" style="stop-color:#FCD34D;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#F59E0B;stop-opacity:0.8" />
+      <stop offset="100%" style="stop-color:#FCD34D;stop-opacity:0" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Fusée principale -->
+  <g id="rocket">
+    <!-- Corps de la fusée -->
+    <path d="M 200 50 L 240 150 L 240 280 L 160 280 L 160 150 Z" fill="url(#rocketGradient)" stroke="#FCD34D" stroke-width="2"/>
+    
+    <!-- Pointe de la fusée -->
+    <path d="M 200 50 L 160 150 L 240 150 Z" fill="#0F172A" stroke="#FCD34D" stroke-width="2"/>
+    
+    <!-- Fenêtre/hublot -->
+    <circle cx="200" cy="120" r="20" fill="url(#windowGradient)" stroke="#0F172A" stroke-width="2"/>
+    <circle cx="200" cy="120" r="12" fill="#FCD34D" opacity="0.6"/>
+    
+    <!-- Ailerons gauche -->
+    <path d="M 160 220 L 140 280 L 160 280 Z" fill="#1E293B" stroke="#FCD34D" stroke-width="2"/>
+    
+    <!-- Ailerons droit -->
+    <path d="M 240 220 L 260 280 L 240 280 Z" fill="#1E293B" stroke="#FCD34D" stroke-width="2"/>
+    
+    <!-- Détails technologiques -->
+    <line x1="170" y1="180" x2="230" y2="180" stroke="#FCD34D" stroke-width="1" opacity="0.6"/>
+    <line x1="170" y1="200" x2="230" y2="200" stroke="#FCD34D" stroke-width="1" opacity="0.6"/>
+    <line x1="170" y1="220" x2="230" y2="220" stroke="#FCD34D" stroke-width="1" opacity="0.6"/>
+    <line x1="170" y1="240" x2="230" y2="240" stroke="#FCD34D" stroke-width="1" opacity="0.6"/>
+    <line x1="170" y1="260" x2="230" y2="260" stroke="#FCD34D" stroke-width="1" opacity="0.6"/>
+  </g>
+  
+  <!-- Flammes -->
+  <g id="flames">
+    <!-- Flamme centrale -->
+    <path d="M 200 280 L 180 330 L 200 380 L 220 330 Z" fill="url(#flameGradient)"/>
+    
+    <!-- Flammes latérales -->
+    <path d="M 170 280 L 160 310 L 170 340 Z" fill="url(#flameGradient)" opacity="0.8"/>
+    <path d="M 230 280 L 240 310 L 230 340 Z" fill="url(#flameGradient)" opacity="0.8"/>
+    
+    <!-- Particules d'énergie -->
+    <circle cx="200" cy="320" r="4" fill="#FCD34D" opacity="0.9"/>
+    <circle cx="190" cy="340" r="3" fill="#FCD34D" opacity="0.7"/>
+    <circle cx="210" cy="340" r="3" fill="#FCD34D" opacity="0.7"/>
+    <circle cx="200" cy="360" r="2" fill="#FCD34D" opacity="0.5"/>
+  </g>
+  
+  <!-- Texte WebBoost -->
+  <text x="200" y="430" font-family="'Space Grotesk', sans-serif" font-size="48" font-weight="700" fill="#F8FAFC" text-anchor="middle" letter-spacing="2">WebBoost</text>
+  
+  <!-- Texte STUDIO -->
+  <text x="200" y="465" font-family="'Space Grotesk', sans-serif" font-size="24" font-weight="400" fill="#FCD34D" text-anchor="middle" letter-spacing="8">STUDIO</text>
+</svg>
