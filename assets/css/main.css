@@ -943,6 +943,10 @@ body {
         display: flex;
     }
     
+    .hero-badge {
+        margin-top: 60px;
+    }
+    
     .hero-title {
         font-size: 48px;
     }

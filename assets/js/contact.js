@@ -1,4 +1,23 @@
 // ========================================
+// NAVIGATION SCROLL EFFECT
+// ========================================
+const navbar = document.getElementById('navbar');
+let lastScroll = 0;
+
+window.addEventListener('scroll', () => {
+    const currentScroll = window.pageYOffset;
+    
+    // Add scrolled class for backdrop effect
+    if (currentScroll > 50) {
+        navbar.classList.add('scrolled');
+    } else {
+        navbar.classList.remove('scrolled');
+    }
+    
+    lastScroll = currentScroll;
+});
+
+// ========================================
 // MOBILE MENU TOGGLE
 // ========================================
 const navToggle = document.getElementById('navToggle');
@@ -32,267 +51,6 @@ document.querySelectorAll('.nav-link').forEach(link => {
 });
 
 // ========================================
-// FORM VALIDATION
-// ========================================
-const contactForm = document.getElementById('contactForm');
-const formInputs = {
-    name: document.getElementById('name'),
-    email: document.getElementById('email'),
-    phone: document.getElementById('phone'),
-    company: document.getElementById('company'),
-    service: document.getElementById('service'),
-    message: document.getElementById('message')
-};
-
-// Validation functions
-function validateName(name) {
-    return name.trim().length >= 2;
-}
-
-function validateEmail(email) {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(email);
-}
-
-function validatePhone(phone) {
-    // Optional field - always valid if empty, otherwise check format
-    if (!phone.trim()) return true;
-    const phoneRegex = /^[\d\s+()-]{10,}$/;
-    return phoneRegex.test(phone);
-}
-
-function validateMessage(message) {
-    return message.trim().length >= 10;
-}
-
-function validateService(service) {
-    return service !== '';
-}
-
-// Show error message
-function showError(fieldName, message) {
-    const formGroup = formInputs[fieldName].closest('.form-group');
-    const errorElement = document.getElementById(fieldName + 'Error');
-    
-    formGroup.classList.add('error');
-    errorElement.textContent = message;
-}
-
-// Clear error message
-function clearError(fieldName) {
-    const formGroup = formInputs[fieldName].closest('.form-group');
-    const errorElement = document.getElementById(fieldName + 'Error');
-    
-    formGroup.classList.remove('error');
-    errorElement.textContent = '';
-}
-
-// Real-time validation on blur
-Object.keys(formInputs).forEach(fieldName => {
-    if (formInputs[fieldName]) {
-        formInputs[fieldName].addEventListener('blur', () => {
-            validateField(fieldName);
-        });
-        
-        // Clear error on focus
-        formInputs[fieldName].addEventListener('focus', () => {
-            clearError(fieldName);
-        });
-    }
-});
-
-// Validate individual field
-function validateField(fieldName) {
-    const value = formInputs[fieldName].value;
-    let isValid = true;
-    let errorMessage = '';
-    
-    switch(fieldName) {
-        case 'name':
-            isValid = validateName(value);
-            errorMessage = 'Veuillez entrer un nom valide (minimum 2 caractères)';
-            break;
-        case 'email':
-            isValid = validateEmail(value);
-            errorMessage = 'Veuillez entrer une adresse email valide';
-            break;
-        case 'phone':
-            isValid = validatePhone(value);
-            errorMessage = 'Veuillez entrer un numéro de téléphone valide';
-            break;
-        case 'service':
-            isValid = validateService(value);
-            errorMessage = 'Veuillez sélectionner un service';
-            break;
-        case 'message':
-            isValid = validateMessage(value);
-            errorMessage = 'Veuillez entrer un message (minimum 10 caractères)';
-            break;
-    }
-    
-    if (!isValid) {
-        showError(fieldName, errorMessage);
-    }
-    
-    return isValid;
-}
-
-// ========================================
-// FORM SUBMISSION
-// ========================================
-contactForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    
-    // Clear all errors
-    Object.keys(formInputs).forEach(fieldName => {
-        clearError(fieldName);
-    });
-    
-    // Validate all required fields
-    let isFormValid = true;
-    
-    if (!validateField('name')) isFormValid = false;
-    if (!validateField('email')) isFormValid = false;
-    if (!validateField('service')) isFormValid = false;
-    if (!validateField('message')) isFormValid = false;
-    
-    // Optional phone validation
-    if (formInputs.phone.value && !validateField('phone')) {
-        isFormValid = false;
-    }
-    
-    if (!isFormValid) {
-        // Scroll to first error
-        const firstError = document.querySelector('.form-group.error');
-        if (firstError) {
-            firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        }
-        return;
-    }
-    
-    // Submit form (simulate submission)
-    submitForm();
-});
-
-function submitForm() {
-    const submitBtn = contactForm.querySelector('.btn-submit');
-    const btnText = submitBtn.querySelector('.btn-text');
-    const originalText = btnText.textContent;
-    
-    // Disable button and show loading
-    submitBtn.disabled = true;
-    btnText.textContent = 'Envoi en cours...';
-    
-    // Simulate API call
-    setTimeout(() => {
-        // Show success message
-        const successMessage = document.getElementById('formSuccess');
-        successMessage.classList.add('show');
-        
-        // Reset form
-        contactForm.reset();
-        
-        // Re-enable button
-        submitBtn.disabled = false;
-        btnText.textContent = originalText;
-        
-        // Hide success message after 5 seconds
-        setTimeout(() => {
-            successMessage.classList.remove('show');
-        }, 5000);
-        
-        // Scroll to success message
-        successMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        
-    }, 1500);
-}
-
-// ========================================
-// INPUT ANIMATIONS
-// ========================================
-document.querySelectorAll('.form-group input, .form-group select, .form-group textarea').forEach(input => {
-    input.addEventListener('focus', () => {
-        input.parentElement.style.transform = 'translateY(-2px)';
-    });
-    
-    input.addEventListener('blur', () => {
-        input.parentElement.style.transform = 'translateY(0)';
-    });
-});
-
-// ========================================
-// SCROLL ANIMATIONS
-// ========================================
-const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -100px 0px'
-};
-
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.style.opacity = '1';
-            entry.target.style.transform = 'translateY(0)';
-            observer.unobserve(entry.target);
-        }
-    });
-}, observerOptions);
-
-// Observe elements
-document.querySelectorAll('.info-card, .benefit-card').forEach(element => {
-    element.style.opacity = '0';
-    element.style.transform = 'translateY(30px)';
-    element.style.transition = 'all 0.6s ease-out';
-    observer.observe(element);
-});
-
-// ========================================
-// CHARACTER COUNT FOR TEXTAREA
-// ========================================
-const messageTextarea = document.getElementById('message');
-const minLength = 10;
-
-messageTextarea.addEventListener('input', () => {
-    const currentLength = messageTextarea.value.length;
-    
-    if (currentLength > 0 && currentLength < minLength) {
-        messageTextarea.style.borderColor = 'rgba(239, 68, 68, 0.5)';
-    } else if (currentLength >= minLength) {
-        messageTextarea.style.borderColor = 'rgba(16, 185, 129, 0.5)';
-    } else {
-        messageTextarea.style.borderColor = 'rgba(252, 211, 77, 0.2)';
-    }
-});
-
-// ========================================
-// PHONE NUMBER FORMATTING
-// ========================================
-const phoneInput = document.getElementById('phone');
-
-phoneInput.addEventListener('input', (e) => {
-    let value = e.target.value.replace(/\D/g, ''); // Remove non-digits
-    
-    // Format as: +33 6 12 34 56 78
-    if (value.startsWith('33')) {
-        value = value.slice(2);
-    }
-    if (value.startsWith('0')) {
-        value = value.slice(1);
-    }
-    
-    if (value.length > 0) {
-        let formatted = '+33 ';
-        for (let i = 0; i < value.length && i < 9; i++) {
-            if (i > 0 && i % 2 === 0) {
-                formatted += ' ';
-            }
-            formatted += value[i];
-        }
-        e.target.value = formatted;
-    }
-});
-
-// ========================================
 // SMOOTH SCROLL FOR ANCHOR LINKS
 // ========================================
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -300,7 +58,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         e.preventDefault();
         const target = document.querySelector(this.getAttribute('href'));
         if (target) {
-            const offset = 80;
+            const offset = 80; // Height of fixed navbar
             const targetPosition = target.offsetTop - offset;
             window.scrollTo({
                 top: targetPosition,
@@ -311,65 +69,308 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 });
 
 // ========================================
-// CURSOR GLOW EFFECT
+// HERO PARTICLES ANIMATION
 // ========================================
-function createCursorGlow() {
-    // Skip on mobile
-    if ('ontouchstart' in window) return;
+function createHeroParticles() {
+    const container = document.getElementById('heroParticles');
+    const particleCount = 30;
     
-    let cursorX = 0, cursorY = 0;
-    let trailX = 0, trailY = 0;
-    
-    const trail = document.createElement('div');
-    trail.style.cssText = `
-        position: fixed;
-        width: 300px;
-        height: 300px;
-        border-radius: 50%;
-        background: radial-gradient(circle, rgba(252, 211, 77, 0.06) 0%, transparent 70%);
-        pointer-events: none;
-        z-index: 9999;
-        transform: translate(-50%, -50%);
-        opacity: 0;
-        transition: opacity 0.3s ease;
-        mix-blend-mode: screen;
-    `;
-    document.body.appendChild(trail);
-    
-    document.addEventListener('mousemove', (e) => {
-        cursorX = e.clientX;
-        cursorY = e.clientY;
-        trail.style.opacity = '1';
-    });
-    
-    document.addEventListener('mouseleave', () => {
-        trail.style.opacity = '0';
-    });
-    
-    // Smooth follow
-    function animate() {
-        trailX += (cursorX - trailX) * 0.15;
-        trailY += (cursorY - trailY) * 0.15;
-        
-        trail.style.left = trailX + 'px';
-        trail.style.top = trailY + 'px';
-        
-        requestAnimationFrame(animate);
+    for (let i = 0; i < particleCount; i++) {
+        const particle = document.createElement('div');
+        particle.style.cssText = `
+            position: absolute;
+            width: ${2 + Math.random() * 4}px;
+            height: ${2 + Math.random() * 4}px;
+            background: var(--color-yellow);
+            border-radius: 50%;
+            left: ${Math.random() * 100}%;
+            top: ${Math.random() * 100}%;
+            opacity: ${0.1 + Math.random() * 0.3};
+            animation: floatParticle ${10 + Math.random() * 20}s ease-in-out infinite;
+            animation-delay: ${Math.random() * 5}s;
+        `;
+        container.appendChild(particle);
     }
     
-    animate();
+    // Add floating animation
+    if (!document.getElementById('particleAnimationStyle')) {
+        const style = document.createElement('style');
+        style.id = 'particleAnimationStyle';
+        style.textContent = `
+            @keyframes floatParticle {
+                0%, 100% {
+                    transform: translate(0, 0) scale(1);
+                }
+                25% {
+                    transform: translate(30px, -30px) scale(1.2);
+                }
+                50% {
+                    transform: translate(-20px, 20px) scale(0.8);
+                }
+                75% {
+                    transform: translate(20px, 30px) scale(1.1);
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    }
 }
 
 // ========================================
-// INITIALIZE
+// ANIMATED COUNTER FOR STATS
+// ========================================
+function animateCounter(element, target, duration = 2000) {
+    let start = 0;
+    const increment = target / (duration / 16);
+    
+    const updateCounter = () => {
+        start += increment;
+        if (start < target) {
+            element.textContent = Math.floor(start);
+            requestAnimationFrame(updateCounter);
+        } else {
+            element.textContent = target;
+        }
+    };
+    
+    updateCounter();
+}
+
+// Trigger counter animation automatically after page load
+function initStatsCounters() {
+    setTimeout(() => {
+        document.querySelectorAll('.stat-number').forEach(stat => {
+            if (!stat.classList.contains('counted')) {
+                stat.classList.add('counted');
+                const target = parseInt(stat.dataset.target);
+                animateCounter(stat, target);
+            }
+        });
+    }, 1500); // Start after 1.5 seconds
+}
+
+// ========================================
+// SCROLL REVEAL ANIMATIONS
+// ========================================
+const revealElements = document.querySelectorAll('.service-card, .feature-item, .tech-item');
+
+const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry, index) => {
+        if (entry.isIntersecting) {
+            setTimeout(() => {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+            }, index * 100);
+            revealObserver.unobserve(entry.target);
+        }
+    });
+}, {
+    threshold: 0.1,
+    rootMargin: '0px 0px -100px 0px'
+});
+
+revealElements.forEach(element => {
+    element.style.opacity = '0';
+    element.style.transform = 'translateY(30px)';
+    element.style.transition = 'all 0.6s ease-out';
+    revealObserver.observe(element);
+});
+
+// ========================================
+// SERVICE CARDS TILT EFFECT
+// ========================================
+document.querySelectorAll('.service-card').forEach(card => {
+    card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+        
+        const rotateX = (y - centerY) / 10;
+        const rotateY = (centerX - x) / 10;
+        
+        card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-8px)`;
+    });
+    
+    card.addEventListener('mouseleave', () => {
+        card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateY(0)';
+    });
+});
+
+// ========================================
+// PARALLAX EFFECT ON SCROLL
+// ========================================
+window.addEventListener('scroll', () => {
+    const scrolled = window.pageYOffset;
+    
+    // Parallax for hero background
+    const heroBackground = document.querySelector('.hero-background');
+    if (heroBackground) {
+        heroBackground.style.transform = `translateY(${scrolled * 0.5}px)`;
+    }
+    
+    // Parallax for grid overlay
+    const gridOverlay = document.querySelector('.grid-overlay');
+    if (gridOverlay) {
+        gridOverlay.style.transform = `translateY(${scrolled * 0.3}px)`;
+    }
+});
+
+// ========================================
+// CURSOR GLOW EFFECT
+// ========================================
+function createCursorGlow() {
+    const cursorGlow = document.createElement('div');
+    cursorGlow.style.cssText = `
+        position: fixed;
+        width: 400px;
+        height: 400px;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(252, 211, 77, 0.08) 0%, transparent 70%);
+        pointer-events: none;
+        z-index: 9999;
+        transform: translate(-50%, -50%);
+        transition: opacity 0.3s ease;
+        opacity: 0;
+        mix-blend-mode: screen;
+    `;
+    document.body.appendChild(cursorGlow);
+    
+    let mouseX = 0, mouseY = 0;
+    let glowX = 0, glowY = 0;
+    
+    document.addEventListener('mousemove', (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+        cursorGlow.style.opacity = '1';
+    });
+    
+    document.addEventListener('mouseleave', () => {
+        cursorGlow.style.opacity = '0';
+    });
+    
+    // Smooth follow animation
+    function animateGlow() {
+        glowX += (mouseX - glowX) * 0.1;
+        glowY += (mouseY - glowY) * 0.1;
+        
+        cursorGlow.style.left = glowX + 'px';
+        cursorGlow.style.top = glowY + 'px';
+        
+        requestAnimationFrame(animateGlow);
+    }
+    
+    animateGlow();
+}
+
+// ========================================
+// TYPING EFFECT FOR HERO TITLE
+// ========================================
+function createTypingEffect() {
+    const titleHighlight = document.querySelector('.title-highlight');
+    if (!titleHighlight) return;
+    
+    const text = titleHighlight.textContent;
+    titleHighlight.textContent = '';
+    titleHighlight.style.borderRight = '3px solid var(--color-yellow)';
+    
+    let index = 0;
+    
+    function type() {
+        if (index < text.length) {
+            titleHighlight.textContent += text.charAt(index);
+            index++;
+            setTimeout(type, 100);
+        } else {
+            setTimeout(() => {
+                titleHighlight.style.borderRight = 'none';
+            }, 500);
+        }
+    }
+    
+    setTimeout(type, 1000);
+}
+
+// ========================================
+// TECH STACK ROTATION ANIMATION
+// ========================================
+function animateTechStack() {
+    const techItems = document.querySelectorAll('.tech-item');
+    let currentIndex = 0;
+    
+    setInterval(() => {
+        techItems[currentIndex].style.transform = 'scale(1.1)';
+        techItems[currentIndex].style.background = 'rgba(252, 211, 77, 0.1)';
+        
+        setTimeout(() => {
+            techItems[currentIndex].style.transform = 'scale(1)';
+            techItems[currentIndex].style.background = 'var(--color-dark)';
+        }, 500);
+        
+        currentIndex = (currentIndex + 1) % techItems.length;
+    }, 2000);
+}
+
+// ========================================
+// SCROLL PROGRESS INDICATOR
+// ========================================
+function createScrollProgress() {
+    const progressBar = document.createElement('div');
+    progressBar.style.cssText = `
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 3px;
+        background: var(--color-yellow);
+        z-index: 10000;
+        width: 0%;
+        transition: width 0.1s ease;
+    `;
+    document.body.appendChild(progressBar);
+    
+    window.addEventListener('scroll', () => {
+        const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        const scrolled = (window.pageYOffset / windowHeight) * 100;
+        progressBar.style.width = scrolled + '%';
+    });
+}
+
+// ========================================
+// INITIALIZE ALL EFFECTS
 // ========================================
 document.addEventListener('DOMContentLoaded', () => {
+    createHeroParticles();
     createCursorGlow();
+    createTypingEffect();
+    animateTechStack();
+    createScrollProgress();
+    initStatsCounters(); // Initialize stats counters
     
-    // Add page load animation
+    // Add loading animation
     document.body.style.opacity = '0';
     setTimeout(() => {
         document.body.style.transition = 'opacity 0.5s ease';
         document.body.style.opacity = '1';
     }, 100);
+});
+
+// ========================================
+// PERFORMANCE OPTIMIZATION
+// ========================================
+// Reduce animations on low-end devices
+if (navigator.hardwareConcurrency && navigator.hardwareConcurrency < 4) {
+    document.querySelectorAll('.service-card').forEach(card => {
+        card.style.transition = 'all 0.2s ease';
+    });
+}
+
+// Pause animations when tab is not visible
+document.addEventListener('visibilitychange', () => {
+    if (document.hidden) {
+        document.body.style.animationPlayState = 'paused';
+    } else {
+        document.body.style.animationPlayState = 'running';
+    }
 });
