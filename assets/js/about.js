@@ -54,22 +54,23 @@ document.querySelectorAll('.nav-link').forEach(link => {
 // SMOOTH SCROLL FOR ANCHOR LINKS
 // ========================================
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        const href = this.getAttribute('href');
-        // Seulement pour les ancres sans nom de fichier
-        if (href.startsWith('#') && !href.includes('.html')) {
+    // Seulement pour les liens qui sont JUSTE une ancre (pas de .html)
+    const href = anchor.getAttribute('href');
+    if (href && href.startsWith('#') && href.length > 1) {
+        anchor.addEventListener('click', function (e) {
             e.preventDefault();
-            const target = document.querySelector(href);
+            const targetId = this.getAttribute('href');
+            const target = document.querySelector(targetId);
             if (target) {
-                const offset = 80; // Height of fixed navbar
+                const offset = 80;
                 const targetPosition = target.offsetTop - offset;
                 window.scrollTo({
                     top: targetPosition,
                     behavior: 'smooth'
                 });
             }
-        }
-    });
+        });
+    }
 });
 
 // ========================================
