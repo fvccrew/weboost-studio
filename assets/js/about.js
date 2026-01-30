@@ -74,6 +74,17 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 });
 
 // ========================================
+// HANDLE CROSS-PAGE ANCHOR LINKS
+// ========================================
+document.querySelectorAll('a[href*=".html#"]').forEach(link => {
+    link.addEventListener('click', function(e) {
+        const href = this.getAttribute('href');
+        // Laisse le navigateur gérer la navigation normalement
+        // Le navigateur ira automatiquement à la page ET scrollera à l'ancre
+    });
+});
+
+// ========================================
 // HERO PARTICLES ANIMATION
 // ========================================
 function createHeroParticles() {
