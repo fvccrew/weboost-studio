@@ -51,38 +51,9 @@ document.querySelectorAll('.nav-link').forEach(link => {
 });
 
 // ========================================
-// SMOOTH SCROLL FOR ANCHOR LINKS
+// SMOOTH SCROLL DÉSACTIVÉ - Navigation normale
 // ========================================
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    // Seulement pour les liens qui sont JUSTE une ancre (pas de .html)
-    const href = anchor.getAttribute('href');
-    if (href && href.startsWith('#') && href.length > 1) {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            const targetId = this.getAttribute('href');
-            const target = document.querySelector(targetId);
-            if (target) {
-                const offset = 80;
-                const targetPosition = target.offsetTop - offset;
-                window.scrollTo({
-                    top: targetPosition,
-                    behavior: 'smooth'
-                });
-            }
-        });
-    }
-});
-
-// ========================================
-// HANDLE CROSS-PAGE ANCHOR LINKS
-// ========================================
-document.querySelectorAll('a[href*=".html#"]').forEach(link => {
-    link.addEventListener('click', function(e) {
-        const href = this.getAttribute('href');
-        // Laisse le navigateur gérer la navigation normalement
-        // Le navigateur ira automatiquement à la page ET scrollera à l'ancre
-    });
-});
+// Le smooth scroll est désactivé pour éviter les conflits de navigation
 
 // ========================================
 // HERO PARTICLES ANIMATION
