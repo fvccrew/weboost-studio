@@ -937,6 +937,10 @@ body {
         width: 100%;
         text-align: center;
         border-bottom: 1px solid rgba(252, 211, 77, 0.1);
+        display: block;
+        position: relative;
+        z-index: 10;
+        pointer-events: auto;
     }
     
     .nav-toggle {
