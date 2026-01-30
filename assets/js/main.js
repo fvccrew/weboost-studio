@@ -55,15 +55,19 @@ document.querySelectorAll('.nav-link').forEach(link => {
 // ========================================
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            const offset = 80; // Height of fixed navbar
-            const targetPosition = target.offsetTop - offset;
-            window.scrollTo({
-                top: targetPosition,
-                behavior: 'smooth'
-            });
+        const href = this.getAttribute('href');
+        // Seulement pour les ancres sans nom de fichier
+        if (href.startsWith('#') && !href.includes('.html')) {
+            e.preventDefault();
+            const target = document.querySelector(href);
+            if (target) {
+                const offset = 80; // Height of fixed navbar
+                const targetPosition = target.offsetTop - offset;
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
+                });
+            }
         }
     });
 });
