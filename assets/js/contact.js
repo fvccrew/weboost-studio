@@ -325,6 +325,103 @@ function createScrollProgress() {
 }
 
 // ========================================
+// FORM VALIDATION & SUBMISSION
+// ========================================
+const contactForm = document.getElementById('contactForm');
+const successMessage = document.getElementById('successMessage');
+
+contactForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    // Reset errors
+    document.querySelectorAll('.form-error').forEach(err => err.textContent = '');
+    document.querySelectorAll('.form-input, .form-select, .form-textarea').forEach(input => {
+        input.classList.remove('error');
+    });
+    
+    let isValid = true;
+    
+    // Validate Prénom
+    const prenom = document.getElementById('prenom');
+    if (!prenom.value.trim()) {
+        showError('prenom', 'Le prénom est requis');
+        isValid = false;
+    }
+    
+    // Validate Nom
+    const nom = document.getElementById('nom');
+    if (!nom.value.trim()) {
+        showError('nom', 'Le nom est requis');
+        isValid = false;
+    }
+    
+    // Validate Email
+    const email = document.getElementById('email');
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!email.value.trim()) {
+        showError('email', 'L\'email est requis');
+        isValid = false;
+    } else if (!emailRegex.test(email.value)) {
+        showError('email', 'Email invalide');
+        isValid = false;
+    }
+    
+    // Validate Projet
+    const projet = document.getElementById('projet');
+    if (!projet.value) {
+        showError('projet', 'Sélectionnez un type de projet');
+        isValid = false;
+    }
+    
+    // Validate Message
+    const message = document.getElementById('message');
+    if (!message.value.trim()) {
+        showError('message', 'Le message est requis');
+        isValid = false;
+    } else if (message.value.trim().length < 20) {
+        showError('message', 'Le message doit contenir au moins 20 caractères');
+        isValid = false;
+    }
+    
+    // Validate RGPD
+    const rgpd = document.getElementById('rgpd');
+    if (!rgpd.checked) {
+        showError('rgpd', 'Vous devez accepter les conditions');
+        isValid = false;
+    }
+    
+    if (isValid) {
+        // Hide form and show success message
+        contactForm.style.display = 'none';
+        successMessage.style.display = 'block';
+        
+        // In production, send data to server here
+        console.log('Form data:', {
+            prenom: prenom.value,
+            nom: nom.value,
+            email: email.value,
+            telephone: document.getElementById('telephone').value,
+            entreprise: document.getElementById('entreprise').value,
+            budget: document.getElementById('budget').value,
+            projet: projet.value,
+            message: message.value
+        });
+    }
+});
+
+function showError(fieldId, message) {
+    const errorElement = document.getElementById(`${fieldId}-error`);
+    const inputElement = document.getElementById(fieldId);
+    
+    if (errorElement) {
+        errorElement.textContent = message;
+    }
+    if (inputElement) {
+        inputElement.classList.add('error');
+    }
+}
+
+// ========================================
 // INITIALIZE ALL EFFECTS
 // ========================================
 document.addEventListener('DOMContentLoaded', () => {
