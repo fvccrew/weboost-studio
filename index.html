@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="WebBoost Studio - Création de sites web vitrines professionnels dans le Golfe de Saint-Tropez. Développement web et social management.">
+    <title>WebBoost Studio | Développement Web & Social Management - Saint-Tropez</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='50' y1='0' x2='50' y2='100'%3E%3Cstop offset='0%25' style='stop-color:%231E293B'/%3E%3Cstop offset='100%25' style='stop-color:%230F172A'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d='M50 10 L65 40 L65 75 L35 75 L35 40 Z' fill='url(%23g)' stroke='%23FCD34D' stroke-width='2'/%3E%3Cpath d='M50 10 L35 40 L65 40 Z' fill='%230F172A' stroke='%23FCD34D' stroke-width='2'/%3E%3Ccircle cx='50' cy='30' r='6' fill='%23FCD34D'/%3E%3Cpath d='M50 75 L45 85 L50 95 L55 85 Z' fill='%23FCD34D' opacity='0.8'/%3E%3C/svg%3E">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome pour les icônes -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="assets/css/index.css">
+</head>
+<body>
+    
+    <!-- Animation d'intro -->
+    <div id="intro-animation" class="intro-container">
+        <div class="intro-content">
+            <div class="logo-container">
+                <svg width="400" height="500" viewBox="0 0 400 500" fill="none" xmlns="http://www.w3.org/2000/svg" class="animated-logo">
+                    <defs>
+                        <linearGradient id="rocketGradient" x1="200" y1="50" x2="200" y2="300" gradientUnits="userSpaceOnUse">
+                            <stop offset="0%" style="stop-color:#1E293B;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#0F172A;stop-opacity:1" />
+                        </linearGradient>
+                        <linearGradient id="windowGradient" x1="200" y1="100" x2="200" y2="140" gradientUnits="userSpaceOnUse">
+                            <stop offset="0%" style="stop-color:#FDE68A;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#FCD34D;stop-opacity:1" />
+                        </linearGradient>
+                        <linearGradient id="flameGradient" x1="200" y1="280" x2="200" y2="380" gradientUnits="userSpaceOnUse">
+                            <stop offset="0%" style="stop-color:#FCD34D;stop-opacity:1" />
+                            <stop offset="50%" style="stop-color:#F59E0B;stop-opacity:0.8" />
+                            <stop offset="100%" style="stop-color:#FCD34D;stop-opacity:0" />
+                        </linearGradient>
+                        <filter id="glow">
+                            <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+                            <feMerge>
+                                <feMergeNode in="coloredBlur"/>
+                                <feMergeNode in="SourceGraphic"/>
+                            </feMerge>
+                        </filter>
+                    </defs>
+                    
+                    <g id="rocket" filter="url(#glow)">
+                        <path d="M 200 50 L 240 150 L 240 280 L 160 280 L 160 150 Z" fill="url(#rocketGradient)" stroke="#FCD34D" stroke-width="2"/>
+                        <path d="M 200 50 L 160 150 L 240 150 Z" fill="#0F172A" stroke="#FCD34D" stroke-width="2"/>
+                        <circle cx="200" cy="120" r="20" fill="url(#windowGradient)" stroke="#0F172A" stroke-width="2"/>
+                        <circle cx="200" cy="120" r="12" fill="#FCD34D" opacity="0.6" class="window-pulse"/>
+                        <path d="M 160 220 L 140 280 L 160 280 Z" fill="#1E293B" stroke="#FCD34D" stroke-width="2"/>
+                        <path d="M 240 220 L 260 280 L 240 280 Z" fill="#1E293B" stroke="#FCD34D" stroke-width="2"/>
+                        <line x1="170" y1="180" x2="230" y2="180" stroke="#FCD34D" stroke-width="1" opacity="0.6"/>
+                        <line x1="170" y1="200" x2="230" y2="200" stroke="#FCD34D" stroke-width="1" opacity="0.6"/>
+                        <line x1="170" y1="220" x2="230" y2="220" stroke="#FCD34D" stroke-width="1" opacity="0.6"/>
+                        <line x1="170" y1="240" x2="230" y2="240" stroke="#FCD34D" stroke-width="1" opacity="0.6"/>
+                        <line x1="170" y1="260" x2="230" y2="260" stroke="#FCD34D" stroke-width="1" opacity="0.6"/>
+                    </g>
+                    
+                    <g id="flames" class="flames">
+                        <path d="M 200 280 L 180 330 L 200 380 L 220 330 Z" fill="url(#flameGradient)"/>
+                        <path d="M 170 280 L 160 310 L 170 340 Z" fill="url(#flameGradient)" opacity="0.8"/>
+                        <path d="M 230 280 L 240 310 L 230 340 Z" fill="url(#flameGradient)" opacity="0.8"/>
+                        <circle cx="200" cy="320" r="4" fill="#FCD34D" opacity="0.9" class="flame-particle"/>
+                        <circle cx="190" cy="340" r="3" fill="#FCD34D" opacity="0.7" class="flame-particle"/>
+                        <circle cx="210" cy="340" r="3" fill="#FCD34D" opacity="0.7" class="flame-particle"/>
+                        <circle cx="200" cy="360" r="2" fill="#FCD34D" opacity="0.5" class="flame-particle"/>
+                    </g>
+                    
+                    <text x="200" y="430" font-family="'Space Grotesk', sans-serif" font-size="48" font-weight="700" fill="#F8FAFC" text-anchor="middle" letter-spacing="2" class="logo-text-main">WebBoost</text>
+                    <text x="200" y="465" font-family="'Space Grotesk', sans-serif" font-size="24" font-weight="400" fill="#FCD34D" text-anchor="middle" letter-spacing="8" class="logo-text-sub">STUDIO</text>
+                </svg>
+            </div>
+            <div class="intro-tagline">
+                <p class="typing-text">Propulsez votre présence digitale</p>
+            </div>
+            <div class="intro-progress">
+                <div class="progress-bar"></div>
+            </div>
+        </div>
+        <canvas id="particles-canvas" class="particles-canvas"></canvas>
+        <div class="stars-background"></div>
+        <div class="light-rays"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <svg width="50" height="50" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" class="logo-svg">
+                    <defs>
+                        <linearGradient id="navRocketGradient" x1="50" y1="10" x2="50" y2="75">
+                            <stop offset="0%" style="stop-color:#1E293B"/>
+                            <stop offset="100%" style="stop-color:#0F172A"/>
+                        </linearGradient>
+                        <linearGradient id="navFlameGradient" x1="50" y1="75" x2="50" y2="95">
+                            <stop offset="0%" style="stop-color:#FCD34D"/>
+                            <stop offset="100%" style="stop-color:#F59E0B;stop-opacity:0"/>
+                        </linearGradient>
+                    </defs>
+                    <path d="M 50 10 L 65 40 L 65 75 L 35 75 L 35 40 Z" fill="url(#navRocketGradient)" stroke="#FCD34D" stroke-width="2"/>
+                    <path d="M 50 10 L 35 40 L 65 40 Z" fill="#0F172A" stroke="#FCD34D" stroke-width="2"/>
+                    <circle cx="50" cy="30" r="6" fill="#FCD34D" opacity="0.8"/>
+                    <path d="M 35 60 L 25 75 L 35 75 Z" fill="#1E293B" stroke="#FCD34D" stroke-width="1.5"/>
+                    <path d="M 65 60 L 75 75 L 65 75 Z" fill="#1E293B" stroke="#FCD34D" stroke-width="1.5"/>
+                    <path d="M 50 75 L 45 85 L 50 95 L 55 85 Z" fill="url(#navFlameGradient)"/>
+                </svg>
+                <span class="logo-text">WebBoost <span class="logo-accent">Studio</span></span>
+            </div>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="#accueil" class="nav-link active">Accueil</a></li>
+                <li><a href="#services" class="nav-link">Services</a></li>
+                <li><a href="#formules" class="nav-link">Formules</a></li>
+                <li><a href="#a-propos" class="nav-link">À propos</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="accueil" class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    Créez votre <span class="gradient-text">vitrine digitale</span>
+                </h1>
+                <p class="hero-subtitle">
+                    Développement web et social management dans le Golfe de Saint-Tropez
+                </p>
+                <div class="hero-buttons">
+                    <a href="#formules" class="btn btn-primary">
+                        <span>Découvrir nos formules</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                    <a href="#contact" class="btn btn-secondary">
+                        <span>Demander un devis</span>
+                    </a>
+                </div>
+                <div class="hero-features">
+                    <div class="feature-item">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Sites vitrines professionnels</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Design moderne & responsive</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Livraison rapide</span>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="floating-card card-1">
+                    <i class="fas fa-code"></i>
+                    <span>HTML/CSS/JS</span>
+                </div>
+                <div class="floating-card card-2">
+                    <i class="fas fa-mobile-alt"></i>
+                    <span>Responsive</span>
+                </div>
+                <div class="floating-card card-3">
+                    <i class="fas fa-rocket"></i>
+                    <span>Performance</span>
+                </div>
+                <div class="circle-decoration circle-1"></div>
+                <div class="circle-decoration circle-2"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Nos Services</h2>
+                <p class="section-subtitle">Des solutions digitales adaptées à vos besoins</p>
+            </div>
+            <div class="services-grid">
+                <!-- Développement Web -->
+                <div class="service-card featured">
+                    <div class="service-badge">Populaire</div>
+                    <div class="service-icon">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <h3>Développement Web</h3>
+                    <div class="service-price">À partir de 600€</div>
+                    <p>Donnez vie à votre projet web avec un site vitrine moderne, élégant et performant. Je crée des sites web sur mesure, entièrement responsive et optimisés pour le référencement naturel (SEO). Chaque site est développé avec les dernières technologies web (HTML5, CSS3, JavaScript) pour garantir rapidité, sécurité et une expérience utilisateur exceptionnelle sur tous les appareils.</p>
+                    <ul class="service-list">
+                        <li><i class="fas fa-check"></i> Design responsive adapté mobile/tablette/desktop</li>
+                        <li><i class="fas fa-check"></i> Code propre et optimisé pour la performance</li>
+                        <li><i class="fas fa-check"></i> Référencement SEO de base inclus</li>
+                        <li><i class="fas fa-check"></i> Formulaire de contact fonctionnel</li>
+                        <li><i class="fas fa-check"></i> Intégration Google Maps</li>
+                        <li><i class="fas fa-check"></i> Hébergement et nom de domaine (conseils)</li>
+                        <li><i class="fas fa-check"></i> 3 formules selon vos besoins</li>
+                    </ul>
+                </div>
+                
+                <!-- Référencement SEO -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h3>Référencement SEO</h3>
+                    <div class="service-price">À partir de 200€/mois</div>
+                    <p>Apparaissez en première page de Google et attirez plus de clients locaux. Je optimise votre visibilité en ligne avec une stratégie SEO complète adaptée au Golfe de Saint-Tropez. Augmentez votre trafic qualifié, améliorez votre positionnement sur les moteurs de recherche et dominez votre marché local. Un suivi mensuel vous permet de mesurer les résultats concrets de votre investissement.</p>
+                    <ul class="service-list">
+                        <li><i class="fas fa-check"></i> Audit SEO complet de votre site</li>
+                        <li><i class="fas fa-check"></i> Recherche de mots-clés stratégiques</li>
+                        <li><i class="fas fa-check"></i> Optimisation technique (vitesse, mobile, structure)</li>
+                        <li><i class="fas fa-check"></i> Optimisation du contenu et balises</li>
+                        <li><i class="fas fa-check"></i> Référencement local Google My Business</li>
+                        <li><i class="fas fa-check"></i> Netlinking et stratégie de backlinks</li>
+                        <li><i class="fas fa-check"></i> Suivi des positions et trafic mensuel</li>
+                        <li><i class="fas fa-check"></i> Rapport détaillé avec recommandations</li>
+                    </ul>
+                </div>
+                
+                <!-- Social Management -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-share-alt"></i>
+                    </div>
+                    <h3>Social Management</h3>
+                    <div class="service-price">À partir de 149€/mois</div>
+                    <p>Boostez votre présence en ligne et engagez votre communauté avec une gestion professionnelle de vos réseaux sociaux. Je m'occupe de la création de contenu attractif, de la planification des publications, et de l'interaction avec votre audience. Développez votre notoriété, fidélisez vos clients et attirez de nouveaux prospects grâce à une stratégie social media efficace et adaptée à votre secteur d'activité dans le Golfe de Saint-Tropez.</p>
+                    <ul class="service-list">
+                        <li><i class="fas fa-check"></i> Stratégie de contenu personnalisée</li>
+                        <li><i class="fas fa-check"></i> Publications régulières (Instagram, Facebook, LinkedIn)</li>
+                        <li><i class="fas fa-check"></i> Création de visuels professionnels</li>
+                        <li><i class="fas fa-check"></i> Rédaction de posts engageants</li>
+                        <li><i class="fas fa-check"></i> Gestion de la communauté et réponses aux commentaires</li>
+                        <li><i class="fas fa-check"></i> Analyse des performances mensuelles</li>
+                        <li><i class="fas fa-check"></i> Reporting détaillé avec recommandations</li>
+                    </ul>
+                </div>
+                
+                <!-- Création de Logo -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-palette"></i>
+                    </div>
+                    <h3>Création de Logo</h3>
+                    <div class="service-price">À partir de 250€</div>
+                    <p>Votre logo est la première impression que vous donnez à vos clients. Je conçois des logos uniques, mémorables et professionnels qui reflètent parfaitement l'essence de votre marque. Après un échange approfondi sur votre activité et vos valeurs, je vous propose plusieurs concepts créatifs. Vous bénéficiez de révisions illimitées jusqu'à obtenir le logo parfait, livré dans tous les formats nécessaires (vectoriel, web, print) avec une charte graphique complète pour assurer la cohérence de votre communication.</p>
+                    <ul class="service-list">
+                        <li><i class="fas fa-check"></i> Brief créatif et étude de votre secteur</li>
+                        <li><i class="fas fa-check"></i> 3 propositions de logos uniques</li>
+                        <li><i class="fas fa-check"></i> Fichiers vectoriels HD (AI, SVG, EPS)</li>
+                        <li><i class="fas fa-check"></i> Versions PNG et JPG haute résolution</li>
+                        <li><i class="fas fa-check"></i> Déclinaisons couleur et noir & blanc</li>
+                        <li><i class="fas fa-check"></i> Charte graphique (couleurs, typographies)</li>
+                        <li><i class="fas fa-check"></i> Révisions illimitées jusqu'à satisfaction</li>
+                        <li><i class="fas fa-check"></i> Livraison sous 7 jours</li>
+                    </ul>
+                </div>
+                
+                <!-- Maintenance -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <h3>Maintenance & Support</h3>
+                    <div class="service-price">À partir de 100€/mois</div>
+                    <p>Un site web nécessite un entretien régulier pour rester performant, sécurisé et à jour. Je prends en charge la maintenance technique de votre site pour que vous puissiez vous concentrer sur votre activité. Mises à jour de sécurité, sauvegardes automatiques, corrections de bugs, optimisations de performance, et support technique réactif : je veille sur votre site comme si c'était le mien. En cas de problème, vous bénéficiez d'une assistance rapide pour garantir la continuité de votre présence en ligne.</p>
+                    <ul class="service-list">
+                        <li><i class="fas fa-check"></i> Mises à jour de sécurité mensuelles</li>
+                        <li><i class="fas fa-check"></i> Sauvegardes hebdomadaires automatiques</li>
+                        <li><i class="fas fa-check"></i> Surveillance de la performance du site</li>
+                        <li><i class="fas fa-check"></i> Corrections de bugs et dysfonctionnements</li>
+                        <li><i class="fas fa-check"></i> Optimisation de la vitesse de chargement</li>
+                        <li><i class="fas fa-check"></i> Support technique par email (réponse sous 24h)</li>
+                        <li><i class="fas fa-check"></i> Modifications mineures de contenu incluses</li>
+                        <li><i class="fas fa-check"></i> Rapport mensuel de maintenance</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Formules Section -->
+    <section id="formules" class="formules">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Nos Formules</h2>
+                <p class="section-subtitle">Choisissez la formule adaptée à votre projet</p>
+            </div>
+            <div class="pricing-grid">
+                <!-- Formule Essentielle -->
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3>Starter</h3>
+                        <p class="pricing-subtitle">Formule Essentielle</p>
+                        <div class="pricing-icon">
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <div class="pricing-body">
+                        <div class="pricing-feature-main">
+                            <span class="pricing-price">À partir de 600€</span>
+                            <p>Parfait pour démarrer</p>
+                        </div>
+                        <ul class="pricing-features">
+                            <li><i class="fas fa-check"></i> 3 pages incluses</li>
+                            <li><i class="fas fa-check"></i> Page d'accueil</li>
+                            <li><i class="fas fa-check"></i> Page services</li>
+                            <li><i class="fas fa-check"></i> Page contact</li>
+                            <li><i class="fas fa-check"></i> Design responsive</li>
+                            <li><i class="fas fa-check"></i> Formulaire de contact</li>
+                            <li><i class="fas fa-check"></i> Optimisation SEO de base</li>
+                            <li><i class="fas fa-check"></i> Livraison 7 jours</li>
+                        </ul>
+                    </div>
+                    <div class="pricing-footer">
+                        <a href="#contact" class="btn btn-outline">Choisir cette formule</a>
+                    </div>
+                </div>
+
+                <!-- Formule Professionnelle -->
+                <div class="pricing-card featured">
+                    <div class="pricing-badge">Recommandée</div>
+                    <div class="pricing-header">
+                        <h3>Business</h3>
+                        <p class="pricing-subtitle">Formule Professionnelle</p>
+                        <div class="pricing-icon">
+                            <i class="fas fa-crown"></i>
+                        </div>
+                    </div>
+                    <div class="pricing-body">
+                        <div class="pricing-feature-main">
+                            <span class="pricing-price">À partir de 1 300€</span>
+                            <p>Le choix idéal</p>
+                        </div>
+                        <ul class="pricing-features">
+                            <li><i class="fas fa-check"></i> 5 pages incluses</li>
+                            <li><i class="fas fa-check"></i> Page d'accueil</li>
+                            <li><i class="fas fa-check"></i> Page services</li>
+                            <li><i class="fas fa-check"></i> Page à propos</li>
+                            <li><i class="fas fa-check"></i> Page galerie/portfolio</li>
+                            <li><i class="fas fa-check"></i> Page contact</li>
+                            <li><i class="fas fa-check"></i> Design responsive premium</li>
+                            <li><i class="fas fa-check"></i> Animations avancées</li>
+                            <li><i class="fas fa-check"></i> Optimisation SEO avancée</li>
+                            <li><i class="fas fa-check"></i> Intégration Google Maps</li>
+                            <li><i class="fas fa-check"></i> Livraison 10 jours</li>
+                        </ul>
+                    </div>
+                    <div class="pricing-footer">
+                        <a href="#contact" class="btn btn-primary">Choisir cette formule</a>
+                    </div>
+                </div>
+
+                <!-- Formule Personnalisée -->
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3>Premium</h3>
+                        <p class="pricing-subtitle">Formule Personnalisée</p>
+                        <div class="pricing-icon">
+                            <i class="fas fa-infinity"></i>
+                        </div>
+                    </div>
+                    <div class="pricing-body">
+                        <div class="pricing-feature-main">
+                            <span class="pricing-price">Sur devis</span>
+                            <p>Votre projet unique</p>
+                        </div>
+                        <ul class="pricing-features">
+                            <li><i class="fas fa-check"></i> Nombre de pages illimité</li>
+                            <li><i class="fas fa-check"></i> Design 100% sur mesure</li>
+                            <li><i class="fas fa-check"></i> Fonctionnalités avancées</li>
+                            <li><i class="fas fa-check"></i> Animations personnalisées</li>
+                            <li><i class="fas fa-check"></i> Intégrations tierces</li>
+                            <li><i class="fas fa-check"></i> Support prioritaire</li>
+                            <li><i class="fas fa-check"></i> Formation incluse</li>
+                            <li><i class="fas fa-check"></i> Maintenance 3 mois offerte</li>
+                            <li><i class="fas fa-check"></i> Délais selon projet</li>
+                        </ul>
+                    </div>
+                    <div class="pricing-footer">
+                        <a href="#contact" class="btn btn-outline">Discutons-en</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- À propos Section -->
+    <section id="a-propos" class="about">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-content">
+                    <h2 class="section-title">WebBoost Studio</h2>
+                    <p class="about-text">
+                        Basé dans le prestigieux Golfe de Saint-Tropez, WebBoost Studio est votre partenaire digital pour créer une présence en ligne qui vous ressemble.
+                    </p>
+                    <p class="about-text">
+                        Spécialisé dans la création de sites vitrines modernes et performants, je mets mon expertise au service de votre projet pour vous offrir une solution web professionnelle, élégante et efficace.
+                    </p>
+                    <div class="about-stats">
+                        <div class="stat-item">
+                            <div class="stat-number">100%</div>
+                            <div class="stat-label">Satisfaction client</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">7j</div>
+                            <div class="stat-label">Livraison rapide</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">∞</div>
+                            <div class="stat-label">Créativité</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-visual">
+                    <div class="about-image-container">
+                        <i class="fas fa-map-marker-alt location-icon"></i>
+                        <div class="location-text">Golfe de Saint-Tropez</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Prêt à démarrer ?</h2>
+                <p class="section-subtitle">Discutons de votre projet dès aujourd'hui</p>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h3>Contactez-nous</h3>
+                    <p>Que vous ayez un projet en tête ou simplement des questions, n'hésitez pas à nous contacter. Nous vous répondrons dans les plus brefs délais.</p>
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <strong>Localisation</strong>
+                                <p>Golfe de Saint-Tropez, France</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <strong>Email</strong>
+                                <p>contact@webboost-studio.fr</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-clock"></i>
+                            <div>
+                                <strong>Disponibilité</strong>
+                                <p>Lun - Ven : 9h - 18h</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form-container">
+                    <form class="contact-form" id="contact-form">
+                        <div class="form-group">
+                            <label for="name">Nom complet</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Téléphone</label>
+                            <input type="tel" id="phone" name="phone">
+                        </div>
+                        <div class="form-group">
+                            <label for="formule">Service souhaité</label>
+                            <select id="formule" name="formule">
+                                <option value="">Sélectionnez un service</option>
+                                <optgroup label="Sites Web">
+                                    <option value="starter">Starter - 3 pages</option>
+                                    <option value="business">Business - 5 pages</option>
+                                    <option value="premium">Premium - Sur mesure</option>
+                                </optgroup>
+                                <optgroup label="Services Récurrents">
+                                    <option value="seo">Référencement SEO</option>
+                                    <option value="social">Social Management</option>
+                                    <option value="maintenance">Maintenance & Support</option>
+                                </optgroup>
+                                <optgroup label="Autres Services">
+                                    <option value="logo">Création de Logo</option>
+                                    <option value="autre">Autre / Plusieurs services</option>
+                                </optgroup>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Votre message</label>
+                            <textarea id="message" name="message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-full">
+                            <span>Envoyer le message</span>
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h3>WebBoost <span class="gradient-text">Studio</span></h3>
+                    <p>Propulsez votre présence digitale</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Liens rapides</h4>
+                    <ul>
+                        <li><a href="#accueil">Accueil</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#formules">Formules</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Légal</h4>
+                    <ul>
+                        <li><a href="mentions-legales.html">Mentions légales</a></li>
+                        <li><a href="politique-confidentialite.html">Politique de confidentialité</a></li>
+                    </ul>
+                </div>
+                <div class="footer-social">
+                    <h4>Suivez-nous</h4>
+                    <div class="social-icons">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 WebBoost Studio. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Popup Cookies -->
+    <div id="cookie-banner" class="cookie-banner">
+        <div class="cookie-content">
+            <div class="cookie-text">
+                <h3><i class="fas fa-cookie-bite"></i> Cookies</h3>
+                <p>Nous utilisons des cookies pour améliorer votre expérience sur notre site. En continuant à naviguer, vous acceptez notre utilisation des cookies.</p>
+            </div>
+            <div class="cookie-buttons">
+                <button id="cookie-accept" class="btn btn-primary btn-cookie">
+                    <span>Accepter</span>
+                </button>
+                <button id="cookie-decline" class="btn btn-secondary btn-cookie">
+                    <span>Refuser</span>
+                </button>
+                <a href="politique-confidentialite.html" class="cookie-link">En savoir plus</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="assets/js/index.js"></script>
+    
+    <!-- Canvas de particules permanent pour tout le site -->
+    <canvas id="site-particles" class="site-particles-canvas"></canvas>
+</body>
+</html>
