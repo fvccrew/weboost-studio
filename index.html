@@ -41,16 +41,9 @@
                             <stop offset="50%" style="stop-color:#F59E0B;stop-opacity:0.8" />
                             <stop offset="100%" style="stop-color:#FCD34D;stop-opacity:0" />
                         </linearGradient>
-                        <filter id="glow">
-                            <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
-                            <feMerge>
-                                <feMergeNode in="coloredBlur"/>
-                                <feMergeNode in="SourceGraphic"/>
-                            </feMerge>
-                        </filter>
                     </defs>
                     
-                    <g id="rocket" filter="url(#glow)">
+                    <g id="rocket">
                         <path d="M 200 50 L 240 150 L 240 280 L 160 280 L 160 150 Z" fill="url(#rocketGradient)" stroke="#FCD34D" stroke-width="2"/>
                         <path d="M 200 50 L 160 150 L 240 150 Z" fill="#0F172A" stroke="#FCD34D" stroke-width="2"/>
                         <circle cx="200" cy="120" r="20" fill="url(#windowGradient)" stroke="#0F172A" stroke-width="2"/>
