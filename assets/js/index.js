@@ -792,3 +792,128 @@ lazyImages.forEach(img => imageObserver.observe(img));
 console.log('%c🚀 WebBoost Studio', 'color: #FCD34D; font-size: 24px; font-weight: bold;');
 console.log('%cSite développé avec passion ❤️', 'color: #94A3B8; font-size: 14px;');
 console.log('%cGolfe de Saint-Tropez', 'color: #F59E0B; font-size: 12px;');
+
+// ===================================
+// HERO GRID ANIMATION
+// ===================================
+function initHeroGrid() {
+    const canvas = document.getElementById('grid-canvas');
+    if (!canvas) return;
+    
+    const ctx = canvas.getContext('2d');
+    canvas.width = canvas.offsetWidth;
+    canvas.height = canvas.offsetHeight;
+    
+    const gridSize = 40;
+    const dots = [];
+    const mouse = { x: null, y: null };
+    const maxDistance = 150;
+    
+    // Créer les points de la grille
+    for (let x = 0; x < canvas.width; x += gridSize) {
+        for (let y = 0; y < canvas.height; y += gridSize) {
+            dots.push({
+                x: x,
+                y: y,
+                baseX: x,
+                baseY: y,
+                vx: 0,
+                vy: 0
+            });
+        }
+    }
+    
+    // Suivre la souris
+    canvas.addEventListener('mousemove', (e) => {
+        const rect = canvas.getBoundingClientRect();
+        mouse.x = e.clientX - rect.left;
+        mouse.y = e.clientY - rect.top;
+    });
+    
+    canvas.addEventListener('mouseleave', () => {
+        mouse.x = null;
+        mouse.y = null;
+    });
+    
+    // Animation
+    function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        
+        // Dessiner les lignes de grille
+        ctx.strokeStyle = 'rgba(252, 211, 77, 0.1)';
+        ctx.lineWidth = 1;
+        
+        for (let i = 0; i < canvas.width; i += gridSize) {
+            ctx.beginPath();
+            ctx.moveTo(i, 0);
+            ctx.lineTo(i, canvas.height);
+            ctx.stroke();
+        }
+        
+        for (let i = 0; i < canvas.height; i += gridSize) {
+            ctx.beginPath();
+            ctx.moveTo(0, i);
+            ctx.lineTo(canvas.width, i);
+            ctx.stroke();
+        }
+        
+        // Animer et dessiner les points
+        dots.forEach(dot => {
+            // Interaction souris
+            if (mouse.x !== null && mouse.y !== null) {
+                const dx = mouse.x - dot.x;
+                const dy = mouse.y - dot.y;
+                const distance = Math.sqrt(dx * dx + dy * dy);
+                
+                if (distance < maxDistance) {
+                    const force = (maxDistance - distance) / maxDistance;
+                    dot.vx += dx * force * 0.02;
+                    dot.vy += dy * force * 0.02;
+                }
+            }
+            
+            // Retour à la position de base
+            dot.vx += (dot.baseX - dot.x) * 0.05;
+            dot.vy += (dot.baseY - dot.y) * 0.05;
+            
+            // Friction
+            dot.vx *= 0.9;
+            dot.vy *= 0.9;
+            
+            // Mise à jour position
+            dot.x += dot.vx;
+            dot.y += dot.vy;
+            
+            // Dessiner le point
+            const distanceFromBase = Math.sqrt(
+                Math.pow(dot.x - dot.baseX, 2) + Math.pow(dot.y - dot.baseY, 2)
+            );
+            const opacity = Math.min(0.8, 0.3 + distanceFromBase / 50);
+            
+            ctx.fillStyle = `rgba(252, 211, 77, ${opacity})`;
+            ctx.beginPath();
+            ctx.arc(dot.x, dot.y, 2, 0, Math.PI * 2);
+            ctx.fill();
+        });
+        
+        requestAnimationFrame(animate);
+    }
+    
+    // Redimensionnement
+    window.addEventListener('resize', () => {
+        canvas.width = canvas.offsetWidth;
+        canvas.height = canvas.offsetHeight;
+    });
+    
+    // Démarrer l'animation après l'intro
+    setTimeout(() => {
+        animate();
+    }, 6000);
+}
+
+// Initialiser au chargement
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initHeroGrid);
+} else {
+    initHeroGrid();
+}

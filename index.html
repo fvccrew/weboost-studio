@@ -234,6 +234,7 @@
 
     <!-- Hero Section -->
     <section id="accueil" class="hero">
+        <canvas id="grid-canvas" class="grid-canvas"></canvas>
         <div class="hero-container">
             <div class="hero-content">
                 <h1 class="hero-title">
@@ -265,22 +266,6 @@
                         <span>Livraison rapide</span>
                     </div>
                 </div>
-            </div>
-            <div class="hero-visual">
-                <div class="floating-card card-1">
-                    <i class="fas fa-code"></i>
-                    <span>HTML/CSS/JS</span>
-                </div>
-                <div class="floating-card card-2">
-                    <i class="fas fa-mobile-alt"></i>
-                    <span>Responsive</span>
-                </div>
-                <div class="floating-card card-3">
-                    <i class="fas fa-rocket"></i>
-                    <span>Performance</span>
-                </div>
-                <div class="circle-decoration circle-1"></div>
-                <div class="circle-decoration circle-2"></div>
             </div>
         </div>
     </section>
@@ -413,6 +398,40 @@
         </div>
     </section>
 
+    <!-- À propos Section -->
+    <section id="a-propos" class="about-section">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-image" data-animate>
+                    <div class="image-wrapper">
+                        <img src="stephane-miliziano.webp" alt="WebBoost Studio - Agence Web Golfe de Saint-Tropez" loading="lazy">
+                        <div class="image-decoration"></div>
+                    </div>
+                </div>
+                
+                <div class="about-text" data-animate>
+                    <div class="section-header">
+                        <h2>À propos</h2>
+                        <p class="section-subtitle">WebBoost Studio</p>
+                    </div>
+                    
+                    <div class="about-description">
+                        <p>Passionné par le digital et l'entrepreneuriat, j'ai créé WebBoost Studio pour accompagner les entreprises du Golfe de Saint-Tropez dans leur transformation numérique.</p>
+                        
+                        <p>Fort d'une expertise en développement web, référencement SEO et marketing digital, je propose des solutions sur-mesure qui allient performance technique et stratégie commerciale.</p>
+                        
+                        <p>Mon objectif ? Propulser votre présence en ligne et transformer votre site web en véritable outil de croissance pour votre entreprise.</p>
+                    </div>
+                    
+                    <a href="#contact" class="btn btn-primary">
+                        <span>Discutons de votre projet</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
     <!-- Formules Section -->
     <section id="formules" class="formules">
         <div class="container">
@@ -520,45 +539,105 @@
     </section>
 
     <!-- À propos Section -->
-    <section id="a-propos" class="about">
+    <!-- Portfolio Examples Section -->
+    <section id="exemples" class="exemples-section">
         <div class="container">
-            <div class="about-grid">
-                <div class="about-content">
-                    <h2 class="section-title">WebBoost Studio</h2>
-                    <p class="about-text">
-                        Basé dans le prestigieux Golfe de Saint-Tropez, WebBoost Studio est votre partenaire digital pour créer une présence en ligne qui vous ressemble.
-                    </p>
-                    <p class="about-text">
-                        Spécialisé dans la création de sites vitrines modernes et performants, je mets mon expertise au service de votre projet pour vous offrir une solution web professionnelle, élégante et efficace.
-                    </p>
-                    <div class="about-stats">
-                        <div class="stat-item">
-                            <div class="stat-number">100%</div>
-                            <div class="stat-label">Satisfaction client</div>
+            <div class="section-header" data-animate>
+                <span class="section-label">Portfolio</span>
+                <h2>Exemples de Réalisations</h2>
+                <p class="section-subtitle">Découvrez des exemples pour chaque formule</p>
+            </div>
+            
+            <div class="exemples-grid">
+                <!-- Exemple Starter -->
+                <div class="exemple-card" data-animate>
+                    <div class="exemple-image">
+                        <img src="exemple-starter.webp" alt="Exemple site Formule Starter - En construction" loading="lazy">
+                        <div class="exemple-overlay">
+                            <div class="exemple-badge construction">En Construction</div>
+                            <div class="exemple-info">
+                                <h3>Formule Starter</h3>
+                                <p>Site vitrine 3 pages</p>
+                                <span class="exemple-status">Bientôt disponible</span>
+                            </div>
                         </div>
-                        <div class="stat-item">
-                            <div class="stat-number">7j</div>
-                            <div class="stat-label">Livraison rapide</div>
+                    </div>
+                    <div class="exemple-footer">
+                        <div class="exemple-title">
+                            <h4>Site Vitrine Starter</h4>
+                            <span class="exemple-price">À partir de 600€</span>
                         </div>
-                        <div class="stat-item">
-                            <div class="stat-number">∞</div>
-                            <div class="stat-label">Créativité</div>
+                        <div class="exemple-features">
+                            <span><i class="fas fa-check"></i> 3 pages</span>
+                            <span><i class="fas fa-check"></i> Responsive</span>
+                            <span><i class="fas fa-check"></i> SEO</span>
                         </div>
                     </div>
                 </div>
-                <div class="about-visual">
-                    <div class="about-image-container">
-                        <i class="fas fa-map-marker-alt location-icon"></i>
-                        <div class="location-text">Golfe de Saint-Tropez</div>
+                
+                <!-- Exemple Business -->
+                <div class="exemple-card featured" data-animate>
+                    <div class="exemple-badge popular">Populaire</div>
+                    <div class="exemple-image">
+                        <img src="exemple-business.webp" alt="Da Enzo - Restaurant Italien Cogolin - Formule Business" loading="lazy">
+                        <div class="exemple-overlay">
+                            <div class="exemple-info">
+                                <h3>Da Enzo</h3>
+                                <p>Ristorante Italiano - Cogolin</p>
+                                <a href="https://fvccrew.github.io/da-enzo/" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">
+                                    <span>Voir le site</span>
+                                    <i class="fas fa-external-link-alt"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="exemple-footer">
+                        <div class="exemple-title">
+                            <h4>Formule Business</h4>
+                            <span class="exemple-price">À partir de 1 300€</span>
+                        </div>
+                        <div class="exemple-features">
+                            <span><i class="fas fa-check"></i> 5 pages</span>
+                            <span><i class="fas fa-check"></i> Animations</span>
+                            <span><i class="fas fa-check"></i> SEO avancé</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Exemple Premium -->
+                <div class="exemple-card" data-animate>
+                    <div class="exemple-image">
+                        <img src="exemple-premium.webp" alt="ST Prestige - Conciergerie de Luxe Saint-Tropez - Formule Premium" loading="lazy">
+                        <div class="exemple-overlay">
+                            <div class="exemple-info">
+                                <h3>ST Prestige</h3>
+                                <p>Conciergerie de Luxe - Saint-Tropez</p>
+                                <a href="https://fvccrew.github.io/st-prestige/" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">
+                                    <span>Voir le site</span>
+                                    <i class="fas fa-external-link-alt"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="exemple-footer">
+                        <div class="exemple-title">
+                            <h4>Formule Premium</h4>
+                            <span class="exemple-price">Sur devis</span>
+                        </div>
+                        <div class="exemple-features">
+                            <span><i class="fas fa-check"></i> Sur mesure</span>
+                            <span><i class="fas fa-check"></i> Design unique</span>
+                            <span><i class="fas fa-check"></i> Fonctionnalités avancées</span>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-
+    
     <!-- Contact Section -->
     <section id="contact" class="contact">
-        <div class="container">
+
             <div class="section-header">
                 <h2 class="section-title">Prêt à démarrer ?</h2>
                 <p class="section-subtitle">Discutons de votre projet dès aujourd'hui</p>
