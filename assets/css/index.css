@@ -522,7 +522,7 @@ nav, section, footer {
     min-height: 100vh;
     display: flex;
     align-items: center;
-    padding: 8rem 2rem 4rem;
+    padding: 12rem 2rem 4rem;
     position: relative;
     overflow: hidden;
     opacity: 0;
@@ -2312,16 +2312,14 @@ p {
     margin: 0 auto;
 }
 
-/* Cacher les anciennes animations */
-.hero-visual,
-.floating-card,
-.circle-decoration {
-    display: none !important;
+/* Réactiver les bulles flottantes avec la grille */
+.hero-visual {
+    display: block !important;
 }
 
-/* Hero container centré */
-.hero-container {
-    grid-template-columns: 1fr !important;
+.floating-card,
+.circle-decoration {
+    display: block !important;
 }
 
 /* Boutons Hero centrés */
@@ -2341,16 +2339,31 @@ p {
         margin-bottom: 6rem !important;
         position: relative;
         z-index: 20 !important;
-        background: linear-gradient(135deg, rgba(30, 41, 59, 0.9), rgba(15, 23, 42, 0.9));
-        padding: 1.5rem;
-        border-radius: 15px;
-        backdrop-filter: blur(10px);
-        border: 1px solid rgba(252, 211, 77, 0.2);
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        background: transparent !important;
+        padding: 0 !important;
+        border-radius: 0 !important;
+        backdrop-filter: none !important;
+        border: none !important;
+        box-shadow: none !important;
+        display: flex;
+        flex-direction: column;
+        gap: 0.8rem;
     }
     
     .hero-features .feature-item {
-        margin-bottom: 0.5rem;
+        background: linear-gradient(135deg, rgba(30, 41, 59, 0.95), rgba(15, 23, 42, 0.95));
+        padding: 1rem 1.5rem;
+        border-radius: 50px;
+        border: 2px solid rgba(252, 211, 77, 0.3);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        margin-bottom: 0;
+        transition: all 0.3s ease;
+    }
+    
+    .hero-features .feature-item:hover {
+        border-color: rgba(252, 211, 77, 0.6);
+        transform: translateX(5px);
+        box-shadow: 0 6px 20px rgba(252, 211, 77, 0.2);
     }
     
     .hero-features .feature-item:last-child {
@@ -2359,12 +2372,20 @@ p {
     
     .hero-features .feature-item i {
         color: var(--primary-color) !important;
-        font-size: 1.2rem !important;
+        font-size: 1.1rem !important;
         flex-shrink: 0;
+        background: rgba(252, 211, 77, 0.15);
+        width: 28px;
+        height: 28px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
     }
     
     .hero-features .feature-item span {
         color: var(--light-text) !important;
+        font-weight: 500;
     }
 }
 
@@ -2375,10 +2396,22 @@ p {
     
     .hero-features {
         margin-bottom: 7rem !important;
-        padding: 1.2rem;
+        gap: 0.7rem;
     }
     
     .hero-features .feature-item {
         font-size: 0.9rem;
+        padding: 0.9rem 1.3rem;
+    }
+}
+
+/* Hero responsive - cacher bulles sur mobile */
+@media (max-width: 480px) {
+    .hero-container {
+        grid-template-columns: 1fr !important;
+    }
+    
+    .hero-visual {
+        display: none !important;
     }
 }
