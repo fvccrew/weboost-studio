@@ -2415,3 +2415,66 @@ p {
         display: none !important;
     }
 }
+
+
+/* Centrer "Nous contacter" sur mobile */
+@media (max-width: 768px) {
+    /* Centrer le header */
+    .contact .section-header {
+        text-align: center !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+        padding-left: 1rem !important;
+        padding-right: 1rem !important;
+    }
+    
+    .contact .section-header h2,
+    .contact .section-header .section-title {
+        text-align: center !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
+    
+    .contact .section-header p,
+    .contact .section-header .section-subtitle {
+        text-align: center !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
+    
+    /* Centrer contact-info (Contactez-nous) */
+    .contact-info {
+        text-align: center !important;
+        padding-left: 0 !important;
+    }
+    
+    .contact-info h3 {
+        text-align: center !important;
+    }
+    
+    .contact-info p {
+        text-align: center !important;
+    }
+    
+    .contact-details {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+    }
+    
+    .contact-item {
+        text-align: center !important;
+        justify-content: center !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 0.5rem !important;
+    }
+    
+    .contact-item i {
+        margin-top: 0 !important;
+    }
+    
+    .contact-item div {
+        text-align: center !important;
+    }
+}
