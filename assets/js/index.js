@@ -139,7 +139,7 @@
     // FADE OUT DOUX
     setTimeout(() => {
         intro.style.opacity = '0';
-        intro.style.transition = 'opacity 0.8s ease';
+        intro.style.transition = 'opacity 1s ease';
         setTimeout(() => {
             intro.style.display = 'none';
             
@@ -169,8 +169,8 @@
                     }, 40);
                 });
             }, 100);
-        }, 800);
-    }, 2200);
+        }, 1000);
+    }, 2700);
 })();
 
 // CURSEUR PERSONNALISÉ
