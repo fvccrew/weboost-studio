@@ -12,8 +12,37 @@
     const introAlreadySeen = sessionStorage.getItem('introSeen');
     
     if (introAlreadySeen) {
-        // Si déjà vue, masquer l'intro immédiatement
+        // Si déjà vue, masquer l'intro et lancer directement les animations
         intro.style.display = 'none';
+        
+        // Lancer titre et compteurs directement
+        setTimeout(() => {
+            const heroTitle = document.querySelector('.hero-title');
+            if (heroTitle) {
+                heroTitle.style.transition = 'all 1.5s cubic-bezier(0.68, -0.55, 0.265, 1.55)';
+                heroTitle.style.opacity = '1';
+                heroTitle.style.transform = 'translateY(0) scale(1)';
+            }
+            
+            setTimeout(() => {
+                const counters = document.querySelectorAll('.stat-number');
+                counters.forEach(counter => {
+                    const target = parseInt(counter.getAttribute('data-target'));
+                    let current = 0;
+                    const increment = target / 30;
+                    const timer = setInterval(() => {
+                        current += increment;
+                        if (current >= target) {
+                            counter.textContent = target;
+                            clearInterval(timer);
+                        } else {
+                            counter.textContent = Math.floor(current);
+                        }
+                    }, 40);
+                });
+            }, 100);
+        }, 100);
+        
         return;
     }
     
@@ -110,24 +139,39 @@
     // FADE OUT DOUX
     setTimeout(() => {
         intro.style.opacity = '0';
-        intro.style.transition = 'opacity 1.5s ease';
+        intro.style.transition = 'opacity 0.8s ease';
         setTimeout(() => {
             intro.style.display = 'none';
-        }, 1500);
-    }, 3200);
+            
+            // LANCER ANIMATION HERO IMMÉDIATEMENT APRÈS L'INTRO
+            const heroTitle = document.querySelector('.hero-title');
+            if (heroTitle) {
+                heroTitle.style.transition = 'all 1.5s cubic-bezier(0.68, -0.55, 0.265, 1.55)';
+                heroTitle.style.opacity = '1';
+                heroTitle.style.transform = 'translateY(0) scale(1)';
+            }
+            
+            // LANCER COMPTEURS RAPIDEMENT APRÈS LE TITRE
+            setTimeout(() => {
+                const counters = document.querySelectorAll('.stat-number');
+                counters.forEach(counter => {
+                    const target = parseInt(counter.getAttribute('data-target'));
+                    let current = 0;
+                    const increment = target / 30;
+                    const timer = setInterval(() => {
+                        current += increment;
+                        if (current >= target) {
+                            counter.textContent = target;
+                            clearInterval(timer);
+                        } else {
+                            counter.textContent = Math.floor(current);
+                        }
+                    }, 40);
+                });
+            }, 100);
+        }, 800);
+    }, 2200);
 })();
-
-// ANIMATION HERO TITLE - APPARAÎT TOUT DE SUITE
-window.addEventListener('load', () => {
-    setTimeout(() => {
-        const heroTitle = document.querySelector('.hero-title');
-        if (heroTitle) {
-            heroTitle.style.transition = 'all 1.5s cubic-bezier(0.68, -0.55, 0.265, 1.55)';
-            heroTitle.style.opacity = '1';
-            heroTitle.style.transform = 'translateY(0) scale(1)';
-        }
-    }, 100);
-});
 
 // CURSEUR PERSONNALISÉ
 const cursor = document.querySelector('.cursor');
@@ -182,34 +226,6 @@ if (menuToggle && navMenu) {
         });
     });
 }
-
-// COMPTEURS ANIMÉS
-const counters = document.querySelectorAll('.stat-number');
-const observerOptions = {
-    threshold: 0.5
-};
-
-const counterObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            const target = parseInt(entry.target.getAttribute('data-target'));
-            let current = 0;
-            const increment = target / 30; // Réduit de 50 à 30 pour meilleures perfs
-            const timer = setInterval(() => {
-                current += increment;
-                if (current >= target) {
-                    entry.target.textContent = target;
-                    clearInterval(timer);
-                } else {
-                    entry.target.textContent = Math.floor(current);
-                }
-            }, 40); // Augmenté de 30 à 40ms
-            counterObserver.unobserve(entry.target);
-        }
-    });
-}, observerOptions);
-
-counters.forEach(counter => counterObserver.observe(counter));
 
 // SCROLL REVEAL
 const revealElements = document.querySelectorAll('.contact-form, .contact-info');

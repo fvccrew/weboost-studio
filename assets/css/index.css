@@ -18,6 +18,11 @@
     overflow: hidden;
 }
 
+/* Masquer le contenu en dessous pendant l'intro */
+body:has(.intro-container:not([style*="display: none"])) .hero {
+    visibility: hidden;
+}
+
 .intro-container::before {
     content: '';
     position: absolute;
