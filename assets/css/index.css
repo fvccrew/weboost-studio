@@ -42,28 +42,29 @@
 }
 
 .intro-content {
-    position: relative;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     z-index: 2;
     text-align: center;
+    width: 90%;
+    max-width: 600px;
 }
 
 .logo-explosion {
     font-size: 5rem;
     font-weight: 900;
     margin-bottom: 1rem;
-    display: flex;
-    justify-content: center;
-    gap: 0.3rem;
+    line-height: 1;
 }
 
 .studio-explosion {
     font-size: 2.5rem;
     font-weight: 700;
-    letter-spacing: 1rem;
-    display: flex;
-    justify-content: center;
-    gap: 0.3rem;
     color: #fcd34d;
+    margin-bottom: 2rem;
+    line-height: 1;
 }
 
 .letter-explode,
@@ -75,13 +76,69 @@
     transform: scale(0) rotate(0deg);
 }
 
-@media (max-width: 768px) {
-    .logo-explosion {
-        font-size: 3rem;
+.intro-tagline {
+    font-size: 1.2rem;
+    color: #94a3b8;
+    margin-bottom: 2rem;
+}
+
+.intro-tagline .word {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.loading-bar {
+    width: 300px;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 2px;
+    margin: 0 auto;
+    overflow: hidden;
+    opacity: 0;
+    animation: fadeIn 0.5s ease 3s forwards;
+}
+
+.loading-progress {
+    width: 0;
+    height: 100%;
+    background: linear-gradient(90deg, #fcd34d, #f59e0b);
+    border-radius: 2px;
+    animation: loading 2s ease 3s forwards;
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
     }
+}
+
+@keyframes loading {
+    to {
+        width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .intro-content {
+        width: 90%;
+        transform: translate(-50%, -50%) translateX(-5%);
+    }
+    
+    .logo-explosion {
+        font-size: 2.8rem;
+    }
+    
     .studio-explosion {
         font-size: 1.5rem;
-        letter-spacing: 0.5rem;
+    }
+    
+    .intro-tagline {
+        font-size: 1rem;
+    }
+    
+    .loading-bar {
+        width: 200px;
     }
 }
 
@@ -328,20 +385,14 @@ section {
     font-size: 72px;
     font-weight: 900;
     margin-bottom: 24px;
-    background: linear-gradient(135deg, #ffffff, #fcd34d);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: #ffffff;
+    text-shadow: 0 0 20px rgba(252, 211, 77, 0.5);
+    opacity: 0;
+    transform: translateY(-200px) scale(0.3);
 }
 
 .cursor-blink {
-    color: var(--accent);
-    animation: blink 1s infinite;
-}
-
-@keyframes blink {
-    0%, 50% { opacity: 1; }
-    51%, 100% { opacity: 0; }
+    display: none;
 }
 
 .hero-subtitle {
@@ -700,6 +751,20 @@ section {
     margin-bottom: 16px;
 }
 
+.portfolio-overlay .btn {
+    background: var(--accent);
+    color: #000;
+    border: none;
+    font-weight: 700;
+    box-shadow: 0 4px 15px rgba(252, 211, 77, 0.4);
+}
+
+.portfolio-overlay .btn:hover {
+    background: var(--accent-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(252, 211, 77, 0.6);
+}
+
 .badge-portfolio {
     display: inline-block;
     background: #666;
@@ -1050,6 +1115,10 @@ section {
 }
 
 @media (max-width: 768px) {
+    .container {
+        padding: 0 20px;
+    }
+    
     .nav-menu {
         position: fixed;
         top: 70px;
@@ -1098,18 +1167,53 @@ section {
         transform: rotate(-45deg) translate(6px, -6px);
     }
     
+    .hero {
+        padding: 100px 0 60px;
+    }
+    
     .hero-title {
-        font-size: 40px;
+        font-size: 32px;
+        line-height: 1.2;
+    }
+    
+    .hero-subtitle {
+        font-size: 18px;
+    }
+    
+    .hero-description {
+        font-size: 15px;
     }
     
     .hero-buttons {
         flex-direction: column;
         align-items: stretch;
+        width: 100%;
+    }
+    
+    .btn {
+        width: 100%;
+        min-width: auto;
     }
     
     .hero-stats {
         grid-template-columns: 1fr;
         gap: 24px;
+    }
+    
+    .stat-number {
+        font-size: 36px;
+    }
+    
+    section {
+        padding: 60px 0;
+    }
+    
+    .section-header h2 {
+        font-size: 32px;
+    }
+    
+    .section-header p {
+        font-size: 16px;
     }
     
     .services-grid,
@@ -1118,11 +1222,33 @@ section {
         grid-template-columns: 1fr;
     }
     
-    section {
-        padding: 60px 0;
+    .service-card,
+    .pricing-card {
+        padding: 32px 20px;
     }
     
-    .section-header h2 {
-        font-size: 36px;
+    .about-content {
+        gap: 40px;
+    }
+    
+    .about-image {
+        max-width: 280px;
+        margin: 0 auto;
+    }
+    
+    .about-text h2 {
+        font-size: 32px;
+    }
+    
+    .about-text h3 {
+        font-size: 20px;
+    }
+    
+    .contact-form {
+        padding: 32px 20px;
+    }
+    
+    .footer-content {
+        gap: 40px;
     }
 }

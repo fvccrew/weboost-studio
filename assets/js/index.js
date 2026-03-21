@@ -8,6 +8,18 @@
     const intro = document.getElementById('intro-animation');
     if (!intro) return;
 
+    // Vérifier si l'intro a déjà été vue pendant cette session
+    const introAlreadySeen = sessionStorage.getItem('introSeen');
+    
+    if (introAlreadySeen) {
+        // Si déjà vue, masquer l'intro immédiatement
+        intro.style.display = 'none';
+        return;
+    }
+    
+    // Marquer l'intro comme vue
+    sessionStorage.setItem('introSeen', 'true');
+
     // PARTICULES DORÉES
     const canvas = document.getElementById('particles-canvas');
     const ctx = canvas?.getContext('2d');
@@ -17,7 +29,8 @@
         canvas.height = window.innerHeight;
 
         const particles = [];
-        const particleCount = 100;
+        // Moins de particules sur mobile pour meilleures performances
+        const particleCount = window.innerWidth < 768 ? 50 : 100;
 
         class Particle {
             constructor() {
@@ -71,8 +84,8 @@
         setTimeout(() => {
             letter.style.opacity = '1';
             letter.style.transform = 'scale(1) rotate(360deg)';
-            letter.style.transition = 'all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55)';
-        }, 800 + (i * 100));
+            letter.style.transition = 'all 0.7s cubic-bezier(0.68, -0.55, 0.265, 1.55)';
+        }, 600 + (i * 80));
     });
 
     const lettersSub = document.querySelectorAll('.letter-explode-sub');
@@ -80,19 +93,41 @@
         setTimeout(() => {
             letter.style.opacity = '1';
             letter.style.transform = 'scale(1) rotate(360deg)';
-            letter.style.transition = 'all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55)';
-        }, 1600 + (i * 80));
+            letter.style.transition = 'all 0.7s cubic-bezier(0.68, -0.55, 0.265, 1.55)';
+        }, 1400 + (i * 60));
+    });
+
+    // ANIMATION WAVE - TAGLINE
+    const words = document.querySelectorAll('.intro-tagline .word');
+    words.forEach((word, i) => {
+        setTimeout(() => {
+            word.style.opacity = '1';
+            word.style.transform = 'translateY(0)';
+            word.style.transition = 'all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)';
+        }, 2000 + (i * 150));
     });
 
     // FADE OUT DOUX
     setTimeout(() => {
         intro.style.opacity = '0';
-        intro.style.transition = 'opacity 2s ease';
+        intro.style.transition = 'opacity 1.5s ease';
         setTimeout(() => {
             intro.style.display = 'none';
-        }, 2000);
-    }, 3500);
+        }, 1500);
+    }, 3200);
 })();
+
+// ANIMATION HERO TITLE - APPARAÎT TOUT DE SUITE
+window.addEventListener('load', () => {
+    setTimeout(() => {
+        const heroTitle = document.querySelector('.hero-title');
+        if (heroTitle) {
+            heroTitle.style.transition = 'all 1.5s cubic-bezier(0.68, -0.55, 0.265, 1.55)';
+            heroTitle.style.opacity = '1';
+            heroTitle.style.transform = 'translateY(0) scale(1)';
+        }
+    }, 100);
+});
 
 // CURSEUR PERSONNALISÉ
 const cursor = document.querySelector('.cursor');
@@ -148,23 +183,6 @@ if (menuToggle && navMenu) {
     });
 }
 
-// TYPING EFFECT HERO
-const typingElement = document.querySelector('.typing-text');
-if (typingElement) {
-    const text = 'WebBoost Studio';
-    let i = 0;
-
-    function typeWriter() {
-        if (i < text.length) {
-            typingElement.textContent += text.charAt(i);
-            i++;
-            setTimeout(typeWriter, 150);
-        }
-    }
-
-    setTimeout(typeWriter, 4000);
-}
-
 // COMPTEURS ANIMÉS
 const counters = document.querySelectorAll('.stat-number');
 const observerOptions = {
@@ -176,7 +194,7 @@ const counterObserver = new IntersectionObserver((entries) => {
         if (entry.isIntersecting) {
             const target = parseInt(entry.target.getAttribute('data-target'));
             let current = 0;
-            const increment = target / 50;
+            const increment = target / 30; // Réduit de 50 à 30 pour meilleures perfs
             const timer = setInterval(() => {
                 current += increment;
                 if (current >= target) {
@@ -185,7 +203,7 @@ const counterObserver = new IntersectionObserver((entries) => {
                 } else {
                     entry.target.textContent = Math.floor(current);
                 }
-            }, 30);
+            }, 40); // Augmenté de 30 à 40ms
             counterObserver.unobserve(entry.target);
         }
     });
@@ -324,14 +342,16 @@ if (aboutContent) {
     aboutObserver.observe(aboutContent);
 }
 
-// PARALLAX
-window.addEventListener('scroll', () => {
-    const scrolled = window.pageYOffset;
-    const heroParticles = document.querySelector('.hero-particles');
-    if (heroParticles) {
-        heroParticles.style.transform = `translateY(${scrolled * 0.5}px)`;
-    }
-});
+// PARALLAX (Desktop seulement)
+if (window.innerWidth > 1024) {
+    window.addEventListener('scroll', () => {
+        const scrolled = window.pageYOffset;
+        const heroParticles = document.querySelector('.hero-particles');
+        if (heroParticles) {
+            heroParticles.style.transform = `translateY(${scrolled * 0.5}px)`;
+        }
+    });
+}
 
 // SMOOTH SCROLL
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
