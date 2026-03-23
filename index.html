@@ -228,45 +228,46 @@
         </div>
     </section>
 
-    <!-- PORTFOLIO -->
+    <!-- EXEMPLES FORMULES -->
     <section class="portfolio" id="portfolio">
         <div class="container">
             <div class="section-header">
-                <h2>Portfolio</h2>
-                <p>Découvrez nos dernières réalisations</p>
+                <h2>Nos Formules en Images</h2>
+                <p>Découvrez des exemples de rendu pour chaque formule</p>
             </div>
             
             <div class="portfolio-grid">
                 <div class="portfolio-item">
                     <div class="portfolio-image">
-                        <img src="exemple-starter.webp" alt="Projet Starter" loading="lazy">
+                        <img src="exemple-starter.webp" alt="Exemple Formule Starter" loading="lazy">
                         <div class="portfolio-overlay">
-                            <span class="badge-portfolio">En Construction</span>
-                            <h3>Projet Starter</h3>
-                            <p>Site vitrine essentiel - 3 pages</p>
+                            <span class="badge-portfolio">Exemple</span>
+                            <h3>Formule Starter</h3>
+                            <p>Site vitrine essentiel - 3 pages - 600€</p>
                         </div>
                     </div>
                 </div>
 
                 <div class="portfolio-item">
                     <div class="portfolio-image">
-                        <img src="exemple-business.webp" alt="Da Enzo" loading="lazy">
+                        <img src="exemple-business.webp" alt="Exemple Formule Business" loading="lazy">
                         <div class="portfolio-overlay">
-                            <span class="badge-portfolio badge-gold">Populaire</span>
-                            <h3>Da Enzo</h3>
-                            <p>Restaurant italien à Cogolin</p>
-                            <a href="https://fvccrew.github.io/da-enzo/" target="_blank" class="btn btn-small">Voir le site</a>
+                            <span class="badge-portfolio badge-gold">Exemple</span>
+                            <h3>Formule Business</h3>
+                            <p>Site vitrine professionnel - 5 pages - 1 300€</p>
+                            <a href="https://fvccrew.github.io/da-enzo/" target="_blank" class="btn btn-small">Voir l'exemple</a>
                         </div>
                     </div>
                 </div>
 
                 <div class="portfolio-item">
                     <div class="portfolio-image">
-                        <img src="exemple-premium.webp" alt="ST Prestige" loading="lazy">
+                        <img src="exemple-premium.webp" alt="Exemple Formule Premium" loading="lazy">
                         <div class="portfolio-overlay">
-                            <h3>ST Prestige</h3>
-                            <p>Conciergerie de luxe à Saint-Tropez</p>
-                            <a href="https://fvccrew.github.io/st-prestige/" target="_blank" class="btn btn-small">Voir le site</a>
+                            <span class="badge-portfolio">Exemple</span>
+                            <h3>Formule Premium</h3>
+                            <p>Site vitrine sur-mesure - Sur devis</p>
+                            <a href="https://fvccrew.github.io/st-prestige/" target="_blank" class="btn btn-small">Voir l'exemple</a>
                         </div>
                     </div>
                 </div>
@@ -318,6 +319,18 @@
                         <div class="form-group">
                             <input type="tel" id="phone" placeholder=" ">
                             <label for="phone">Téléphone (optionnel)</label>
+                        </div>
+                        
+                        <div class="form-group">
+                            <select id="project-type" required>
+                                <option value="">Sélectionnez votre besoin</option>
+                                <option value="starter">Site vitrine Starter (3 pages - 600€)</option>
+                                <option value="business">Site vitrine Business (5 pages - 1 300€)</option>
+                                <option value="premium">Site vitrine Premium (sur-mesure)</option>
+                                <option value="maintenance">Maintenance site existant</option>
+                                <option value="autre">Autre demande</option>
+                            </select>
+                            <label for="project-type">Type de projet</label>
                         </div>
                         
                         <div class="form-group">
@@ -404,6 +417,20 @@
     <!-- Curseur personnalisé -->
     <div class="cursor"></div>
     <div class="cursor-follower"></div>
+
+    <!-- BANNIÈRE COOKIES -->
+    <div id="cookie-banner" class="cookie-banner">
+        <div class="cookie-content">
+            <div class="cookie-text">
+                <h4>🍪 Gestion des cookies</h4>
+                <p>Ce site utilise uniquement des cookies techniques essentiels au bon fonctionnement (navigation, mémorisation de vos préférences). Aucun cookie de tracking, publicité ou analyse n'est utilisé. Vos données ne sont pas transmises à des tiers.</p>
+            </div>
+            <div class="cookie-buttons">
+                <button id="cookie-accept" class="btn btn-primary btn-small">Accepter</button>
+                <a href="politique-confidentialite.html" class="btn btn-outline btn-small">En savoir plus</a>
+            </div>
+        </div>
+    </div>
 
     <script src="assets/js/index.js"></script>
 </body>

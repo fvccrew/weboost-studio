@@ -136,17 +136,17 @@
         }, 2000 + (i * 150));
     });
 
-    // FADE OUT DOUX
+    // FADE OUT RAPIDE
     setTimeout(() => {
         intro.style.opacity = '0';
-        intro.style.transition = 'opacity 1s ease';
+        intro.style.transition = 'opacity 0.8s ease';
         setTimeout(() => {
             intro.style.display = 'none';
             
-            // LANCER ANIMATION HERO IMMÉDIATEMENT APRÈS L'INTRO
+            // LANCER ANIMATION HERO IMMÉDIATEMENT
             const heroTitle = document.querySelector('.hero-title');
             if (heroTitle) {
-                heroTitle.style.transition = 'all 1.5s cubic-bezier(0.68, -0.55, 0.265, 1.55)';
+                heroTitle.style.transition = 'all 1.8s cubic-bezier(0.34, 1.56, 0.64, 1)';
                 heroTitle.style.opacity = '1';
                 heroTitle.style.transform = 'translateY(0) scale(1)';
             }
@@ -168,9 +168,9 @@
                         }
                     }, 40);
                 });
-            }, 100);
-        }, 1000);
-    }, 2700);
+            }, 500);
+        }, 800);
+    }, 4500);
 })();
 
 // CURSEUR PERSONNALISÉ
@@ -429,3 +429,30 @@ window.addEventListener('scroll', () => {
 });
 
 console.log('🚀 WebBoost Studio - Dark Mode chargé !');
+
+// BANNIÈRE COOKIES
+(function() {
+    const cookieBanner = document.getElementById('cookie-banner');
+    const cookieAccept = document.getElementById('cookie-accept');
+    
+    if (!cookieBanner || !cookieAccept) return;
+    
+    // Vérifier si l'utilisateur a déjà accepté
+    const cookieAccepted = localStorage.getItem('cookieAccepted');
+    
+    if (!cookieAccepted) {
+        // Afficher la bannière après 1 seconde
+        setTimeout(() => {
+            cookieBanner.classList.add('show');
+        }, 1000);
+    }
+    
+    // Gérer le clic sur "J'ai compris"
+    cookieAccept.addEventListener('click', () => {
+        localStorage.setItem('cookieAccepted', 'true');
+        cookieBanner.classList.remove('show');
+        setTimeout(() => {
+            cookieBanner.style.display = 'none';
+        }, 400);
+    });
+})();
