@@ -495,6 +495,103 @@ section {
     background: var(--bg-secondary);
 }
 
+/* NOTRE APPROCHE */
+.approach {
+    background: var(--bg-primary);
+    position: relative;
+}
+
+.approach-intro {
+    max-width: 800px;
+    margin: 0 auto 60px;
+    text-align: center;
+}
+
+.approach-intro p {
+    font-size: 18px;
+    line-height: 1.8;
+    color: var(--text-secondary);
+}
+
+.approach-steps {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.step-card {
+    background: var(--bg-card);
+    padding: 40px 32px;
+    border-radius: 16px;
+    border: 1px solid var(--border-color);
+    position: relative;
+    transition: all 0.3s;
+    text-align: center;
+}
+
+.step-card:hover {
+    transform: translateY(-8px);
+    border-color: var(--accent);
+    box-shadow: 0 12px 40px rgba(252, 211, 77, 0.15);
+}
+
+.step-card.featured {
+    background: linear-gradient(135deg, rgba(252, 211, 77, 0.1) 0%, rgba(245, 158, 11, 0.05) 100%);
+    border-color: var(--accent);
+}
+
+.step-number {
+    position: absolute;
+    top: -15px;
+    left: 32px;
+    background: var(--accent);
+    color: var(--bg-primary);
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 900;
+    font-size: 18px;
+    box-shadow: 0 4px 12px rgba(252, 211, 77, 0.3);
+}
+
+.step-icon {
+    width: 80px;
+    height: 80px;
+    margin: 20px auto 24px;
+    background: linear-gradient(135deg, var(--accent) 0%, var(--accent-hover) 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.step-icon i {
+    font-size: 36px;
+    color: var(--bg-primary);
+}
+
+.step-card h3 {
+    font-size: 24px;
+    margin-bottom: 16px;
+    color: var(--text-primary);
+}
+
+.step-card p {
+    font-size: 15px;
+    line-height: 1.8;
+    color: var(--text-secondary);
+}
+
+/* SERVICES */
+.services {
+    background: var(--bg-secondary);
+}
+
 .services-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -1194,6 +1291,11 @@ section {
         grid-template-columns: repeat(2, 1fr);
     }
     
+    .approach-steps {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+    
     .about-content {
         grid-template-columns: 1fr;
         text-align: center;
@@ -1305,6 +1407,14 @@ section {
     
     section {
         padding: 60px 0;
+    }
+    
+    .approach-intro p {
+        font-size: 16px;
+    }
+    
+    .step-card {
+        padding: 40px 24px;
     }
     
     .section-header h2 {
