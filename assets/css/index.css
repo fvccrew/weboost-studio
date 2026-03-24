@@ -127,7 +127,7 @@ body:has(.intro-container:not([style*="display: none"])) .hero {
 @media (max-width: 768px) {
     .intro-content {
         width: 90%;
-        transform: translate(-50%, -50%) translateX(-5%);
+        transform: translate(-50%, -50%);
     }
     
     .logo-explosion {
